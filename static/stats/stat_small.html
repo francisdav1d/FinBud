@@ -80,7 +80,7 @@
 
     <script>
         window.onload = function() {
-            fetch('/db/income_history_smc.json')
+            fetch('/db/smc_stat.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
