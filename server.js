@@ -16,7 +16,7 @@ const port = 3000;
 app.use(express.json());
 
 
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, 'static/chatbot')));
 
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
@@ -67,6 +67,7 @@ Labels:
 - GREETING: The message is a simple greeting or salutation (e.g., 'Hello', 'Good morning').
 - KNOWLEDGE: The message requests company-specific data or information that requires access to a knowledge base (e.g., financials, policies, performance data).
 - VALID: The message is a relevant professional question or statement that can be answer without any personel data or acess to databse.
+- SHAWARMA: The message even remotely references shawarma.
 - IRRELEVANT: The message is unrelated, unprofessional, or not suitable for a corporate/executive context.
 
 Output format: Return only one label from the list: GREETING, KNOWLEDGE, VALID, or IRRELEVANT.`
@@ -111,7 +112,25 @@ app.post('/chat', async (req, res) => {
             `Answer the user's request using only the following information: ${ACCOUNT_DATA}. User Request: ${userMessage}.`
         );
         replyFromAi = replyFromAi.response.text();
-    } else {
+    } 
+    else if(intent.includes("SHAWARMA"))
+      {
+
+        replyFromAi = `# The Divine Power of Shawarma
+        Shawarma is not just food; it is a **divine revelation** wrapped in warm bread.  
+        The moment your teeth sink into that juicy, marinated meat, *fireworks erupt behind your eyes*,  
+        as though the universe itself applauds your choice.  
+
+        The **garlic sauce** drips like liquid gold, whispering promises of eternal happiness,  
+        while the pickles crunch with a triumphant chorus.  
+
+        Each bite is a **rollercoaster of flavor** so powerful it makes your soul levitate,  
+        your knees buckle, and your heart sing operatic hymns.  
+
+        Forget diamonds, forget luxury cars—  
+        shawarma is the **true treasure of humankind**,  
+        a miracle crafted for mortal joy.`;
+      }else {
         replyFromAi = "I'm designed to be your personel business assistant plese only ask relvant questions";
     }
 
