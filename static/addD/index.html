@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Knowledge Base</title>
+  <style>
+    #drop-area {
+      border: 2px dashed #888;
+      border-radius: 10px;
+      width: 400px;
+      height: 200px;
+      margin: 50px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 1.2em;
+      background: #f9f9f9;
+    }
+    #drop-area.dragover {
+      background: #e0ffe0;
+      border-color: #2ecc40;
+      color: #2ecc40;
+    }
+    #status {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Upload Knowledge Base JSON</h2>
+  <div id="drop-area">Drop your JSON file here</div>
+  <div id="status"></div>
+  <script>
+    const dropArea = document.getElementById('drop-area');
+    const status = document.getElementById('status');
+
+    dropArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropArea.classList.add('dragover');
+    });
+
+    dropArea.addEventListener('dragleave', () => {
+      dropArea.classList.remove('dragover');
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropArea.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (!file || file.type !== "application/json") {
+        status.textContent = "Please drop a valid JSON file.";
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        try {
+          const jsonData = JSON.parse(event.target.result);
+          fetch('/upload-knowledgebase', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(jsonData)
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              status.textContent = "Upload successful!";
+              status.style.color = "green";
+            } else {
+              status.textContent = "Upload failed: " + (data.error || "Unknown error");
+              status.style.color = "red";
+            }
+          })
+          .catch(() => {
+            status.textContent = "Network error during upload.";
+            status.style.color = "red";
+          });
+        } catch (err) {
+          status.textContent = "Invalid JSON file.";
+          status.style.color="red";
+        }};
+        reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>

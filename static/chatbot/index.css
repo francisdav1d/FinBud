@@ -85,3 +85,51 @@
     .input-area button:hover {
         background: #0051a8;
     }
+    /* Navbar Styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(30, 40, 30, 0.7); /* subtle background */
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #c4d0b1;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+nav .nav-links a {
+  color: #93a796;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+nav .nav-links a:hover {
+  color: white;
+}
+
+.signup-btn {
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  color: #c4d0b1;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background: white;
+  color:black;
+}

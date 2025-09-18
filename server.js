@@ -146,7 +146,30 @@ app.post('/chat', async (req, res) => {
 
     res.json({ reply: replyFromAi });
 });
+app.post('/upload-knowledgebase', async (req, res) => {
+  try {
+    const knowledgeBaseData = JSON.parse(KNOWLEDGE_BASE);
 
+    // Define a Mongoose schema/model if not already defined
+    const knowledgeSchema = new mongoose.Schema({}, { strict: false });
+    const Knowledge = mongoose.models.Knowledge || mongoose.model('Knowledge', knowledgeSchema);
+
+    // Remove existing documents (optional, if you want to replace)
+    await Knowledge.deleteMany({});
+
+    // Insert new data
+    if (Array.isArray(knowledgeBaseData)) {
+      await Knowledge.insertMany(knowledgeBaseData);
+    } else {
+      await Knowledge.create(knowledgeBaseData);
+    }
+
+    res.json({ success: true, message: 'Knowledge base uploaded to MongoDB.' });
+  } catch (err) {
+    console.error('Error uploading knowledge base:', err);
+    res.status(500).json({ success: false, error: 'Failed to upload knowledge base.' });
+  }
+});
 // server starter
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
