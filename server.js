@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const fs=require('fs');
@@ -47,7 +46,7 @@ const financialModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 const KNOWLEDGE_BASE= fs.readFileSync('database/knowledgebase.json', 'utf8');
 const LARGE_ACCOUNT_DATA=fs.readFileSync('database/income_history_large.json','utf8');
 const SMC_ACCOUNT_DATA=fs.readFileSync('database/income_history_smc.json','utf8')
-
+const MAIN_DATA=fs.readFileSync('database/MAIN_DATA.json');
 
 //temp will might use this later
 
@@ -83,7 +82,7 @@ Labels:
 - GREETING: The message is a simple greeting or salutation (e.g., 'Hello', 'Good morning').
 - KNOWLEDGE: The message requests company-specific data or information that requires access to a knowledge base (e.g., financials, policies, performance data).
 - VALID: The message is a relevant professional question or statement that can be answer without any personel data or acess to databse.
-- SHAWARMA: The message even remotely references shawarma.
+- EXCEL: The user requested to make a excel sheet from the database.
 - IRRELEVANT: The message is unrelated, unprofessional, or not suitable for a corporate/executive context.
 
 Output format: Return only one label from the list: GREETING, KNOWLEDGE, VALID, or IRRELEVANT.`
@@ -107,7 +106,68 @@ Output format: Return only one label from the list: GREETING, KNOWLEDGE, VALID, 
     return "AI_DIDNT_WORK";
   }
 }
+function buildClassifierPrompt(userRequest) {
+  const prerequisiteData = `
+    Knowledge Base:
+    - This company has two business units: Large Customers and Small and Medium Customers (SMC).
+    - Large Customers (LC):
+      - Go-to-market strategy: Uses sales executives to acquire 1-2 customers per month.
+      - Revenue Model: Each customer pays a fixed, high software license fee per month (e.g., $16,500).
+      - Revenue is calculated as: # of paying customers * fixed revenue per customer per month.
+      -database contains: time_period,no_of_sales_exec,new_signings,total_paying_customers,avg_revenue_per_customer,revenue.
+    - Small and Medium Customers (SMC):
+      - Go-to-market strategy: Relies on marketing spend (e.g., Google Ads, LinkedIn) to drive website traffic for demos.
+      - Conversion: A percentage of demo participants convert to paying customers.
+      - Metrics: Key metrics include marketing cost, customer acquisition cost (CAC), and conversion rates.
+      - Revenue Model: Revenue is calculated as: # of paying customers * average revenue per customer.
+      - database contains: time_period,monthly_marketing_cost,new_signings,total_paying_customers,avg_revenue_per_customer,month_revenue
+    -Main_Database:
+      -database contains: yearly history of marketing budget, hiring budget,no of employees hired,current number of employees,no of employees fired, money spent on salary
+  `;
 
+  const systemInstruction = `
+    Your job is to find which data to use from the database look into the prerequisite data to understand about the company.
+    ${prerequisiteData}
+    Only return one the DATA_LABELS and nothing else.
+
+    DATA_LABLES:
+    * SMALL_DB - if the the user prompt needs only the smc department sales data to answer.
+    * MAIN_DB - if the prompt needs the entire company's all-time stats and not history. The query is about the company and not a specific department.
+    * LARGE_DB - if the user prompt needs only the large department sales data to answer.
+    * ALL - if the prompt needs the entire company's data history to answer, also choose this as a safe bet if you are uncertain about choosing the other ones.
+  `;
+
+  const payload = {
+    contents: [
+      {
+        role: "model",
+        parts: [
+          { text: systemInstruction }
+        ]
+      },
+      {
+        role: "user",
+        parts: [
+          { text: userRequest }
+        ]
+      }
+    ]
+  };
+
+  return payload;
+}
+async function path_method(user_request)
+{
+  try {
+    const prompt=buildClassifierPrompt(user_request);
+    const result = await classifierModel.generateContent(prompt);
+    const output = result.response.candidates[0].content.parts[0].text;
+    return output.trim().toUpperCase();
+  } catch (e) {
+    console.error("Error classifying intent:", e);
+    return "AI_DIDNT_WORK";
+  }
+}
 app.post('/chat', async (req, res) => {
     const userMessage = req.body.message;
     console.log("User message:", userMessage);
@@ -123,30 +183,41 @@ app.post('/chat', async (req, res) => {
         replyFromAi = replyFromAi.response.text();
     } else if (intent.includes("GREETING")) {
         replyFromAi = "Hello! How can I assist you with your financial questions today?";
-    } else if (intent.includes("KNOWLEDGE")) {
-        replyFromAi = await financialModel.generateContent(
-            `Answer the user's request using only the following information: ${LARGE_ACCOUNT_DATA}. (refer ${KNOWLEDGE_BASE} for methods). User Request: ${userMessage}.`
-        );
-        replyFromAi = replyFromAi.response.text();
-    } 
-    else if(intent.includes("SHAWARMA"))
+    }else if(intent.includes("EXCEL")){
+      replyFromAi = "Generating a excel sheet...."
+    }else if (intent.includes("KNOWLEDGE")) {
+
+      // replyFromAi = await financialModel.generateContent(
+      //     `Answer the user's request using only the following information: ${LARGE_ACCOUNT_DATA}. (refer ${KNOWLEDGE_BASE} for methods). User Request: ${userMessage}.`
+      // );
+      // replyFromAi = replyFromAi.response.text();
+      const target_db= await path_method(userMessage);
+      console.log(target_db)
+      if(target_db.includes("SMALL_DB"))
       {
-
-        replyFromAi = `# The Divine Power of Shawarma
-        Shawarma is not just food; it is a **divine revelation** wrapped in warm bread.  
-        The moment your teeth sink into that juicy, marinated meat, *fireworks erupt behind your eyes*,  
-        as though the universe itself applauds your choice.  
-
-        The **garlic sauce** drips like liquid gold, whispering promises of eternal happiness,  
-        while the pickles crunch with a triumphant chorus.  
-
-        Each bite is a **rollercoaster of flavor** so powerful it makes your soul levitate,  
-        your knees buckle, and your heart sing operatic hymns.  
-
-        Forget diamonds, forget luxury cars—  
-        shawarma is the **true treasure of humankind**,  
-        a miracle crafted for mortal joy.`;
-      }else {
+        const prompt=`using context from the ${KNOWLEDGE_BASE} and the data from ${SMC_ACCOUNT_DATA} answer the user query: ${userMessage} and reply to this it in markdown format with clear seperators for all tables.NOTE:all currencies are in INR and if the data provided was not enough assume  data needed for that answer and make an answer based on the assumed data.`;
+        replyFromAi=await financialModel.generateContent(prompt);
+        replyFromAi=replyFromAi.response.text();
+      }
+      else if(target_db.includes("MAIN_DB"))
+      {
+        const prompt=`using context from the ${KNOWLEDGE_BASE} and the data from ${MAIN_ACCOUNT_DATA} answer the user query: ${userMessage} and reply to this it in markdown format with clear seperators for all tables. NOTE:all currencies are in INR and if the data provided was not enough assume  data needed for that answer and make an answer based on the assumed data`;
+        replyFromAi=await financialModel.generateContent(prompt);
+          replyFromAi=replyFromAi.response.text();
+      }
+      else if(target_db.includes("LARGE_DB"))
+      {
+        const prompt=`using context from the ${KNOWLEDGE_BASE} and the data from ${LARGE_ACCOUNT_DATA} answer the user query: ${userMessage} and reply to this it in markdown format with clear seperators for all tables.NOTE:all currencies are in INR and if the data provided was not enough assume  data needed for that answer and make an answer based on the assumed data`;
+        replyFromAi=await financialModel.generateContent(prompt);
+        replyFromAi=replyFromAi.response.text();
+      }
+      else
+      {
+        const prompt=`using context from the ${KNOWLEDGE_BASE} and the data from ${SMC_ACCOUNT_DATA} , DATA_FOR_LARGE_${LARGE_ACCOUNT_DATA},MAIN_DATA:${MAIN_DATA} answer the user query: ${userMessage} and reply to this it in markdown format with clear seperators for all tables. NOTE:all currencies are in INR and if the data provided was not enough assume  data needed for that answer and make an answer based on the assumed data.`;
+        replyFromAi=await financialModel.generateContent(prompt);
+        replyFromAi=replyFromAi.response.text();
+      }
+    }else {
         replyFromAi = "I'm designed to be your personel business assistant plese only ask relvant questions";
     }
 
@@ -155,8 +226,6 @@ app.post('/chat', async (req, res) => {
 app.post('/upload-knowledgebase', async (req, res) => {
   try {
     const knowledgeBaseData = JSON.parse(KNOWLEDGE_BASE);
-
-
     const knowledgeSchema = new mongoose.Schema({}, { strict: false });
     const Knowledge = mongoose.models.Knowledge || mongoose.model('Knowledge', knowledgeSchema);
 
@@ -176,6 +245,27 @@ app.post('/upload-knowledgebase', async (req, res) => {
     res.status(500).json({ success: false, error: 'Failed to upload knowledge base.' });
   }
 });
+
+/**
+ * Fetches data from a MongoDB collection.
+ * @param {string} collectionName - The name of the collection.
+ * @param {object} query - The MongoDB query object.
+ * @returns {Promise<Array>} - Array of documents matching the query.
+ */
+async function fetchFromMongo(collectionName) {
+  try {
+    const schema = new mongoose.Schema({}, { strict: false });
+    const Model = mongoose.models[collectionName] || mongoose.model(collectionName, schema, collectionName);
+    const results = await Model.find().lean();
+    return results;
+  } catch (err) {
+    console.log(`Error fetching from ${collectionName}:`, err);
+    return ['fuck this'];
+  }
+}
+
+// Example usage:
+// const data = await fetchFromMongo('Knowledge', { key: 'value' });
 
 // server starter
 app.listen(port, () => {

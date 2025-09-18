@@ -11,6 +11,7 @@
                 bubble.innerHTML = marked.parse(text);
             } else {
                 bubble.textContent = text;
+                console.log(text);
             }
             msgDiv.appendChild(bubble);       
             messagesDiv.appendChild(msgDiv);

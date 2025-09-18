@@ -1,276 +1,299 @@
-{
-  "company_name": "FinBot",
-  "market_region": "India",
-  "business_units": [
-    {
-      "unit": "Large",
-      "monthly_history": [
-        {
-          "period": "2023-01",
-          "sales_executives": 4,
-          "new_signings": 3,
-          "total_paying_customers": 18,
-          "avg_revenue_per_customer": 16500,
-          "revenue": 297000
-        },
-        {
-          "period": "2023-02",
-          "sales_executives": 4,
-          "new_signings": 2,
-          "total_paying_customers": 20,
-          "avg_revenue_per_customer": 16500,
-          "revenue": 330000
-        },
-        {
-          "period": "2023-03",
-          "sales_executives": 5,
-          "new_signings": 4,
-          "total_paying_customers": 24,
-          "avg_revenue_per_customer": 16700,
-          "revenue": 400800
-        },
-        {
-          "period": "2023-04",
-          "sales_executives": 5,
-          "new_signings": 3,
-          "total_paying_customers": 27,
-          "avg_revenue_per_customer": 16700,
-          "revenue": 450900
-        },
-        {
-          "period": "2023-05",
-          "sales_executives": 5,
-          "new_signings": 4,
-          "total_paying_customers": 31,
-          "avg_revenue_per_customer": 16800,
-          "revenue": 520800
-        },
-        {
-          "period": "2023-06",
-          "sales_executives": 6,
-          "new_signings": 5,
-          "total_paying_customers": 36,
-          "avg_revenue_per_customer": 16800,
-          "revenue": 604800
-        },
-        {
-          "period": "2023-07",
-          "sales_executives": 6,
-          "new_signings": 4,
-          "total_paying_customers": 40,
-          "avg_revenue_per_customer": 17000,
-          "revenue": 680000
-        },
-        {
-          "period": "2023-08",
-          "sales_executives": 6,
-          "new_signings": 5,
-          "total_paying_customers": 45,
-          "avg_revenue_per_customer": 17000,
-          "revenue": 765000
-        },
-        {
-          "period": "2023-09",
-          "sales_executives": 7,
-          "new_signings": 6,
-          "total_paying_customers": 51,
-          "avg_revenue_per_customer": 17200,
-          "revenue": 877200
-        },
-        {
-          "period": "2023-10",
-          "sales_executives": 7,
-          "new_signings": 5,
-          "total_paying_customers": 56,
-          "avg_revenue_per_customer": 17200,
-          "revenue": 963200
-        },
-        {
-          "period": "2023-11",
-          "sales_executives": 7,
-          "new_signings": 4,
-          "total_paying_customers": 60,
-          "avg_revenue_per_customer": 17400,
-          "revenue": 1044000
-        },
-        {
-          "period": "2023-12",
-          "sales_executives": 8,
-          "new_signings": 5,
-          "total_paying_customers": 65,
-          "avg_revenue_per_customer": 17500,
-          "revenue": 1137500
-        },
-        {
-          "period": "2024-01",
-          "sales_executives": 8,
-          "new_signings": 6,
-          "total_paying_customers": 71,
-          "avg_revenue_per_customer": 17600,
-          "revenue": 1249600
-        },
-        {
-          "period": "2024-02",
-          "sales_executives": 8,
-          "new_signings": 5,
-          "total_paying_customers": 76,
-          "avg_revenue_per_customer": 17650,
-          "revenue": 1341400
-        },
-        {
-          "period": "2024-03",
-          "sales_executives": 9,
-          "new_signings": 7,
-          "total_paying_customers": 83,
-          "avg_revenue_per_customer": 17700,
-          "revenue": 1469100
-        },
-        {
-          "period": "2024-04",
-          "sales_executives": 9,
-          "new_signings": 6,
-          "total_paying_customers": 89,
-          "avg_revenue_per_customer": 17800,
-          "revenue": 1584200
-        },
-        {
-          "period": "2024-05",
-          "sales_executives": 9,
-          "new_signings": 7,
-          "total_paying_customers": 96,
-          "avg_revenue_per_customer": 17850,
-          "revenue": 1713600
-        },
-        {
-          "period": "2024-06",
-          "sales_executives": 10,
-          "new_signings": 6,
-          "total_paying_customers": 102,
-          "avg_revenue_per_customer": 17900,
-          "revenue": 1825800
-        },
-        {
-          "period": "2024-07",
-          "sales_executives": 10,
-          "new_signings": 7,
-          "total_paying_customers": 109,
-          "avg_revenue_per_customer": 18000,
-          "revenue": 1962000
-        },
-        {
-          "period": "2024-08",
-          "sales_executives": 10,
-          "new_signings": 8,
-          "total_paying_customers": 117,
-          "avg_revenue_per_customer": 18050,
-          "revenue": 2112850
-        },
-        {
-          "period": "2024-09",
-          "sales_executives": 11,
-          "new_signings": 7,
-          "total_paying_customers": 124,
-          "avg_revenue_per_customer": 18100,
-          "revenue": 2244400
-        },
-        {
-          "period": "2024-10",
-          "sales_executives": 11,
-          "new_signings": 8,
-          "total_paying_customers": 132,
-          "avg_revenue_per_customer": 18200,
-          "revenue": 2402400
-        },
-        {
-          "period": "2024-11",
-          "sales_executives": 11,
-          "new_signings": 7,
-          "total_paying_customers": 139,
-          "avg_revenue_per_customer": 18300,
-          "revenue": 2543700
-        },
-        {
-          "period": "2024-12",
-          "sales_executives": 12,
-          "new_signings": 8,
-          "total_paying_customers": 147,
-          "avg_revenue_per_customer": 18400,
-          "revenue": 2704800
-        },
-        {
-          "period": "2025-01",
-          "sales_executives": 12,
-          "new_signings": 8,
-          "total_paying_customers": 155,
-          "avg_revenue_per_customer": 18500,
-          "revenue": 2867500
-        },
-        {
-          "period": "2025-02",
-          "sales_executives": 12,
-          "new_signings": 7,
-          "total_paying_customers": 162,
-          "avg_revenue_per_customer": 18600,
-          "revenue": 3013200
-        },
-        {
-          "period": "2025-03",
-          "sales_executives": 13,
-          "new_signings": 8,
-          "total_paying_customers": 170,
-          "avg_revenue_per_customer": 18700,
-          "revenue": 3179000
-        },
-        {
-          "period": "2025-04",
-          "sales_executives": 13,
-          "new_signings": 9,
-          "total_paying_customers": 179,
-          "avg_revenue_per_customer": 18800,
-          "revenue": 3365200
-        },
-        {
-          "period": "2025-05",
-          "sales_executives": 13,
-          "new_signings": 8,
-          "total_paying_customers": 187,
-          "avg_revenue_per_customer": 18900,
-          "revenue": 3534300
-        },
-        {
-          "period": "2025-06",
-          "sales_executives": 14,
-          "new_signings": 7,
-          "total_paying_customers": 194,
-          "avg_revenue_per_customer": 19000,
-          "revenue": 3686000
-        },
-        {
-          "period": "2025-07",
-          "sales_executives": 14,
-          "new_signings": 8,
-          "total_paying_customers": 202,
-          "avg_revenue_per_customer": 19100,
-          "revenue": 3858200
-        },
-        {
-          "period": "2025-08",
-          "sales_executives": 14,
-          "new_signings": 9,
-          "total_paying_customers": 211,
-          "avg_revenue_per_customer": 19200,
-          "revenue": 4051200
-        },
-        {
-          "period": "2025-09",
-          "sales_executives": 15,
-          "new_signings": 8,
-          "total_paying_customers": 219,
-          "avg_revenue_per_customer": 19300,
-          "revenue": 4226700
-        }
-      ]
-    }
-  ]
-}
-    
+[
+  {
+    "period": "2023-01",
+    "unit": "Large",
+    "sales_executives": 4,
+    "new_signings": 3,
+    "total_paying_customers": 18,
+    "avg_revenue_per_customer": 16500,
+    "revenue": 297000
+  },
+  {
+    "period": "2023-02",
+    "unit": "Large",
+    "sales_executives": 4,
+    "new_signings": 2,
+    "total_paying_customers": 20,
+    "avg_revenue_per_customer": 16500,
+    "revenue": 330000
+  },
+  {
+    "period": "2023-03",
+    "unit": "Large",
+    "sales_executives": 5,
+    "new_signings": 4,
+    "total_paying_customers": 24,
+    "avg_revenue_per_customer": 16700,
+    "revenue": 400800
+  },
+  {
+    "period": "2023-04",
+    "unit": "Large",
+    "sales_executives": 5,
+    "new_signings": 3,
+    "total_paying_customers": 27,
+    "avg_revenue_per_customer": 16700,
+    "revenue": 450900
+  },
+  {
+    "period": "2023-05",
+    "unit": "Large",
+    "sales_executives": 5,
+    "new_signings": 4,
+    "total_paying_customers": 31,
+    "avg_revenue_per_customer": 16800,
+    "revenue": 520800
+  },
+  {
+    "period": "2023-06",
+    "unit": "Large",
+    "sales_executives": 6,
+    "new_signings": 5,
+    "total_paying_customers": 36,
+    "avg_revenue_per_customer": 16800,
+    "revenue": 604800
+  },
+  {
+    "period": "2023-07",
+    "unit": "Large",
+    "sales_executives": 6,
+    "new_signings": 4,
+    "total_paying_customers": 40,
+    "avg_revenue_per_customer": 17000,
+    "revenue": 680000
+  },
+  {
+    "period": "2023-08",
+    "unit": "Large",
+    "sales_executives": 6,
+    "new_signings": 5,
+    "total_paying_customers": 45,
+    "avg_revenue_per_customer": 17000,
+    "revenue": 765000
+  },
+  {
+    "period": "2023-09",
+    "unit": "Large",
+    "sales_executives": 7,
+    "new_signings": 6,
+    "total_paying_customers": 51,
+    "avg_revenue_per_customer": 17200,
+    "revenue": 877200
+  },
+  {
+    "period": "2023-10",
+    "unit": "Large",
+    "sales_executives": 7,
+    "new_signings": 5,
+    "total_paying_customers": 56,
+    "avg_revenue_per_customer": 17200,
+    "revenue": 963200
+  },
+  {
+    "period": "2023-11",
+    "unit": "Large",
+    "sales_executives": 7,
+    "new_signings": 4,
+    "total_paying_customers": 60,
+    "avg_revenue_per_customer": 17400,
+    "revenue": 1044000
+  },
+  {
+    "period": "2023-12",
+    "unit": "Large",
+    "sales_executives": 8,
+    "new_signings": 5,
+    "total_paying_customers": 65,
+    "avg_revenue_per_customer": 17500,
+    "revenue": 1137500
+  },
+  {
+    "period": "2024-01",
+    "unit": "Large",
+    "sales_executives": 8,
+    "new_signings": 6,
+    "total_paying_customers": 71,
+    "avg_revenue_per_customer": 17600,
+    "revenue": 1249600
+  },
+  {
+    "period": "2024-02",
+    "unit": "Large",
+    "sales_executives": 8,
+    "new_signings": 5,
+    "total_paying_customers": 76,
+    "avg_revenue_per_customer": 17650,
+    "revenue": 1341400
+  },
+  {
+    "period": "2024-03",
+    "unit": "Large",
+    "sales_executives": 9,
+    "new_signings": 7,
+    "total_paying_customers": 83,
+    "avg_revenue_per_customer": 17700,
+    "revenue": 1469100
+  },
+  {
+    "period": "2024-04",
+    "unit": "Large",
+    "sales_executives": 9,
+    "new_signings": 6,
+    "total_paying_customers": 89,
+    "avg_revenue_per_customer": 17800,
+    "revenue": 1584200
+  },
+  {
+    "period": "2024-05",
+    "unit": "Large",
+    "sales_executives": 9,
+    "new_signings": 7,
+    "total_paying_customers": 96,
+    "avg_revenue_per_customer": 17850,
+    "revenue": 1713600
+  },
+  {
+    "period": "2024-06",
+    "unit": "Large",
+    "sales_executives": 10,
+    "new_signings": 6,
+    "total_paying_customers": 102,
+    "avg_revenue_per_customer": 17900,
+    "revenue": 1825800
+  },
+  {
+    "period": "2024-07",
+    "unit": "Large",
+    "sales_executives": 10,
+    "new_signings": 7,
+    "total_paying_customers": 109,
+    "avg_revenue_per_customer": 18000,
+    "revenue": 1962000
+  },
+  {
+    "period": "2024-08",
+    "unit": "Large",
+    "sales_executives": 10,
+    "new_signings": 8,
+    "total_paying_customers": 117,
+    "avg_revenue_per_customer": 18050,
+    "revenue": 2112850
+  },
+  {
+    "period": "2024-09",
+    "unit": "Large",
+    "sales_executives": 11,
+    "new_signings": 7,
+    "total_paying_customers": 124,
+    "avg_revenue_per_customer": 18100,
+    "revenue": 2244400
+  },
+  {
+    "period": "2024-10",
+    "unit": "Large",
+    "sales_executives": 11,
+    "new_signings": 8,
+    "total_paying_customers": 132,
+    "avg_revenue_per_customer": 18200,
+    "revenue": 2402400
+  },
+  {
+    "period": "2024-11",
+    "unit": "Large",
+    "sales_executives": 11,
+    "new_signings": 7,
+    "total_paying_customers": 139,
+    "avg_revenue_per_customer": 18300,
+    "revenue": 2543700
+  },
+  {
+    "period": "2024-12",
+    "unit": "Large",
+    "sales_executives": 12,
+    "new_signings": 8,
+    "total_paying_customers": 147,
+    "avg_revenue_per_customer": 18400,
+    "revenue": 2704800
+  },
+  {
+    "period": "2025-01",
+    "unit": "Large",
+    "sales_executives": 12,
+    "new_signings": 8,
+    "total_paying_customers": 155,
+    "avg_revenue_per_customer": 18500,
+    "revenue": 2867500
+  },
+  {
+    "period": "2025-02",
+    "unit": "Large",
+    "sales_executives": 12,
+    "new_signings": 7,
+    "total_paying_customers": 162,
+    "avg_revenue_per_customer": 18600,
+    "revenue": 3013200
+  },
+  {
+    "period": "2025-03",
+    "unit": "Large",
+    "sales_executives": 13,
+    "new_signings": 8,
+    "total_paying_customers": 170,
+    "avg_revenue_per_customer": 18700,
+    "revenue": 3179000
+  },
+  {
+    "period": "2025-04",
+    "unit": "Large",
+    "sales_executives": 13,
+    "new_signings": 9,
+    "total_paying_customers": 179,
+    "avg_revenue_per_customer": 18800,
+    "revenue": 3365200
+  },
+  {
+    "period": "2025-05",
+    "unit": "Large",
+    "sales_executives": 13,
+    "new_signings": 8,
+    "total_paying_customers": 187,
+    "avg_revenue_per_customer": 18900,
+    "revenue": 3534300
+  },
+  {
+    "period": "2025-06",
+    "unit": "Large",
+    "sales_executives": 14,
+    "new_signings": 7,
+    "total_paying_customers": 194,
+    "avg_revenue_per_customer": 19000,
+    "revenue": 3686000
+  },
+  {
+    "period": "2025-07",
+    "unit": "Large",
+    "sales_executives": 14,
+    "new_signings": 8,
+    "total_paying_customers": 202,
+    "avg_revenue_per_customer": 19100,
+    "revenue": 3858200
+  },
+  {
+    "period": "2025-08",
+    "unit": "Large",
+    "sales_executives": 14,
+    "new_signings": 9,
+    "total_paying_customers": 211,
+    "avg_revenue_per_customer": 19200,
+    "revenue": 4051200
+  },
+  {
+    "period": "2025-09",
+    "unit": "Large",
+    "sales_executives": 15,
+    "new_signings": 8,
+    "total_paying_customers": 219,
+    "avg_revenue_per_customer": 19300,
+    "revenue": 4226700
+  }
+]

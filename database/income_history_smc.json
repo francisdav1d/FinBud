@@ -1,275 +1,299 @@
-{
-  "company_name": "FinBot",
-  "market_region": "India",
-  "business_units": [
-     {
-      "unit": "Small and Medium",
-      "monthly_history": [
-        {
-          "period": "2023-01",
-          "monthly_marketing_cost": 50000,
-          "new_signings": 15,
-          "total_paying_customers": 15,
-          "avg_revenue_per_customer": 2000,
-          "revenue": 30000
-        },
-        {
-          "period": "2023-02",
-          "monthly_marketing_cost": 50000,
-          "new_signings": 15,
-          "total_paying_customers": 30,
-          "avg_revenue_per_customer": 2050,
-          "revenue": 61500
-        },
-        {
-          "period": "2023-03",
-          "monthly_marketing_cost": 55000,
-          "new_signings": 17,
-          "total_paying_customers": 47,
-          "avg_revenue_per_customer": 2100,
-          "revenue": 98700
-        },
-        {
-          "period": "2023-04",
-          "monthly_marketing_cost": 55000,
-          "new_signings": 17,
-          "total_paying_customers": 64,
-          "avg_revenue_per_customer": 2150,
-          "revenue": 137600
-        },
-        {
-          "period": "2023-05",
-          "monthly_marketing_cost": 55000,
-          "new_signings": 17,
-          "total_paying_customers": 81,
-          "avg_revenue_per_customer": 2200,
-          "revenue": 178200
-        },
-        {
-          "period": "2023-06",
-          "monthly_marketing_cost": 60000,
-          "new_signings": 18,
-          "total_paying_customers": 99,
-          "avg_revenue_per_customer": 2250,
-          "revenue": 222750
-        },
-        {
-          "period": "2023-07",
-          "monthly_marketing_cost": 60000,
-          "new_signings": 18,
-          "total_paying_customers": 117,
-          "avg_revenue_per_customer": 2300,
-          "revenue": 269100
-        },
-        {
-          "period": "2023-08",
-          "monthly_marketing_cost": 60000,
-          "new_signings": 18,
-          "total_paying_customers": 135,
-          "avg_revenue_per_customer": 2350,
-          "revenue": 317250
-        },
-        {
-          "period": "2023-09",
-          "monthly_marketing_cost": 65000,
-          "new_signings": 20,
-          "total_paying_customers": 155,
-          "avg_revenue_per_customer": 2400,
-          "revenue": 372000
-        },
-        {
-          "period": "2023-10",
-          "monthly_marketing_cost": 65000,
-          "new_signings": 20,
-          "total_paying_customers": 175,
-          "avg_revenue_per_customer": 2450,
-          "revenue": 428750
-        },
-        {
-          "period": "2023-11",
-          "monthly_marketing_cost": 65000,
-          "new_signings": 20,
-          "total_paying_customers": 195,
-          "avg_revenue_per_customer": 2500,
-          "revenue": 487500
-        },
-        {
-          "period": "2023-12",
-          "monthly_marketing_cost": 70000,
-          "new_signings": 21,
-          "total_paying_customers": 216,
-          "avg_revenue_per_customer": 2550,
-          "revenue": 550800
-        },
-        {
-          "period": "2024-01",
-          "monthly_marketing_cost": 70000,
-          "new_signings": 21,
-          "total_paying_customers": 237,
-          "avg_revenue_per_customer": 2600,
-          "revenue": 616200
-        },
-        {
-          "period": "2024-02",
-          "monthly_marketing_cost": 70000,
-          "new_signings": 21,
-          "total_paying_customers": 258,
-          "avg_revenue_per_customer": 2650,
-          "revenue": 683700
-        },
-        {
-          "period": "2024-03",
-          "monthly_marketing_cost": 75000,
-          "new_signings": 23,
-          "total_paying_customers": 281,
-          "avg_revenue_per_customer": 2700,
-          "revenue": 758700
-        },
-        {
-          "period": "2024-04",
-          "monthly_marketing_cost": 75000,
-          "new_signings": 23,
-          "total_paying_customers": 304,
-          "avg_revenue_per_customer": 2750,
-          "revenue": 836000
-        },
-        {
-          "period": "2024-05",
-          "monthly_marketing_cost": 75000,
-          "new_signings": 23,
-          "total_paying_customers": 327,
-          "avg_revenue_per_customer": 2800,
-          "revenue": 915600
-        },
-        {
-          "period": "2024-06",
-          "monthly_marketing_cost": 80000,
-          "new_signings": 24,
-          "total_paying_customers": 351,
-          "avg_revenue_per_customer": 2850,
-          "revenue": 1000350
-        },
-        {
-          "period": "2024-07",
-          "monthly_marketing_cost": 80000,
-          "new_signings": 24,
-          "total_paying_customers": 375,
-          "avg_revenue_per_customer": 2900,
-          "revenue": 1087500
-        },
-        {
-          "period": "2024-08",
-          "monthly_marketing_cost": 80000,
-          "new_signings": 24,
-          "total_paying_customers": 399,
-          "avg_revenue_per_customer": 2950,
-          "revenue": 1177050
-        },
-        {
-          "period": "2024-09",
-          "monthly_marketing_cost": 85000,
-          "new_signings": 26,
-          "total_paying_customers": 425,
-          "avg_revenue_per_customer": 3000,
-          "revenue": 1275000
-        },
-        {
-          "period": "2024-10",
-          "monthly_marketing_cost": 85000,
-          "new_signings": 26,
-          "total_paying_customers": 451,
-          "avg_revenue_per_customer": 3050,
-          "revenue": 1375550
-        },
-        {
-          "period": "2024-11",
-          "monthly_marketing_cost": 85000,
-          "new_signings": 26,
-          "total_paying_customers": 477,
-          "avg_revenue_per_customer": 3100,
-          "revenue": 1478700
-        },
-        {
-          "period": "2024-12",
-          "monthly_marketing_cost": 90000,
-          "new_signings": 27,
-          "total_paying_customers": 504,
-          "avg_revenue_per_customer": 3150,
-          "revenue": 1587600
-        },
-        {
-          "period": "2025-01",
-          "monthly_marketing_cost": 90000,
-          "new_signings": 27,
-          "total_paying_customers": 531,
-          "avg_revenue_per_customer": 3200,
-          "revenue": 1700400
-        },
-        {
-          "period": "2025-02",
-          "monthly_marketing_cost": 90000,
-          "new_signings": 27,
-          "total_paying_customers": 558,
-          "avg_revenue_per_customer": 3250,
-          "revenue": 1813500
-        },
-        {
-          "period": "2025-03",
-          "monthly_marketing_cost": 95000,
-          "new_signings": 29,
-          "total_paying_customers": 587,
-          "avg_revenue_per_customer": 3300,
-          "revenue": 1937100
-        },
-        {
-          "period": "2025-04",
-          "monthly_marketing_cost": 95000,
-          "new_signings": 29,
-          "total_paying_customers": 616,
-          "avg_revenue_per_customer": 3350,
-          "revenue": 2063600
-        },
-        {
-          "period": "2025-05",
-          "monthly_marketing_cost": 95000,
-          "new_signings": 29,
-          "total_paying_customers": 645,
-          "avg_revenue_per_customer": 3400,
-          "revenue": 2193000
-        },
-        {
-          "period": "2025-06",
-          "monthly_marketing_cost": 100000,
-          "new_signings": 30,
-          "total_paying_customers": 675,
-          "avg_revenue_per_customer": 3450,
-          "revenue": 2328750
-        },
-        {
-          "period": "2025-07",
-          "monthly_marketing_cost": 100000,
-          "new_signings": 30,
-          "total_paying_customers": 705,
-          "avg_revenue_per_customer": 3500,
-          "revenue": 2467500
-        },
-        {
-          "period": "2025-08",
-          "monthly_marketing_cost": 100000,
-          "new_signings": 30,
-          "total_paying_customers": 735,
-          "avg_revenue_per_customer": 3550,
-          "revenue": 2609250
-        },
-        {
-          "period": "2025-09",
-          "monthly_marketing_cost": 105000,
-          "new_signings": 32,
-          "total_paying_customers": 767,
-          "avg_revenue_per_customer": 3600,
-          "revenue": 2761200
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "period": "2023-01",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 50000,
+    "new_signings": 15,
+    "total_paying_customers": 15,
+    "avg_revenue_per_customer": 2000,
+    "revenue": 30000
+  },
+  {
+    "period": "2023-02",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 50000,
+    "new_signings": 15,
+    "total_paying_customers": 30,
+    "avg_revenue_per_customer": 2050,
+    "revenue": 61500
+  },
+  {
+    "period": "2023-03",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 55000,
+    "new_signings": 17,
+    "total_paying_customers": 47,
+    "avg_revenue_per_customer": 2100,
+    "revenue": 98700
+  },
+  {
+    "period": "2023-04",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 55000,
+    "new_signings": 17,
+    "total_paying_customers": 64,
+    "avg_revenue_per_customer": 2150,
+    "revenue": 137600
+  },
+  {
+    "period": "2023-05",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 55000,
+    "new_signings": 17,
+    "total_paying_customers": 81,
+    "avg_revenue_per_customer": 2200,
+    "revenue": 178200
+  },
+  {
+    "period": "2023-06",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 60000,
+    "new_signings": 18,
+    "total_paying_customers": 99,
+    "avg_revenue_per_customer": 2250,
+    "revenue": 222750
+  },
+  {
+    "period": "2023-07",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 60000,
+    "new_signings": 18,
+    "total_paying_customers": 117,
+    "avg_revenue_per_customer": 2300,
+    "revenue": 269100
+  },
+  {
+    "period": "2023-08",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 60000,
+    "new_signings": 18,
+    "total_paying_customers": 135,
+    "avg_revenue_per_customer": 2350,
+    "revenue": 317250
+  },
+  {
+    "period": "2023-09",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 65000,
+    "new_signings": 20,
+    "total_paying_customers": 155,
+    "avg_revenue_per_customer": 2400,
+    "revenue": 372000
+  },
+  {
+    "period": "2023-10",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 65000,
+    "new_signings": 20,
+    "total_paying_customers": 175,
+    "avg_revenue_per_customer": 2450,
+    "revenue": 428750
+  },
+  {
+    "period": "2023-11",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 65000,
+    "new_signings": 20,
+    "total_paying_customers": 195,
+    "avg_revenue_per_customer": 2500,
+    "revenue": 487500
+  },
+  {
+    "period": "2023-12",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 70000,
+    "new_signings": 21,
+    "total_paying_customers": 216,
+    "avg_revenue_per_customer": 2550,
+    "revenue": 550800
+  },
+  {
+    "period": "2024-01",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 70000,
+    "new_signings": 21,
+    "total_paying_customers": 237,
+    "avg_revenue_per_customer": 2600,
+    "revenue": 616200
+  },
+  {
+    "period": "2024-02",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 70000,
+    "new_signings": 21,
+    "total_paying_customers": 258,
+    "avg_revenue_per_customer": 2650,
+    "revenue": 683700
+  },
+  {
+    "period": "2024-03",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 75000,
+    "new_signings": 23,
+    "total_paying_customers": 281,
+    "avg_revenue_per_customer": 2700,
+    "revenue": 758700
+  },
+  {
+    "period": "2024-04",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 75000,
+    "new_signings": 23,
+    "total_paying_customers": 304,
+    "avg_revenue_per_customer": 2750,
+    "revenue": 836000
+  },
+  {
+    "period": "2024-05",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 75000,
+    "new_signings": 23,
+    "total_paying_customers": 327,
+    "avg_revenue_per_customer": 2800,
+    "revenue": 915600
+  },
+  {
+    "period": "2024-06",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 80000,
+    "new_signings": 24,
+    "total_paying_customers": 351,
+    "avg_revenue_per_customer": 2850,
+    "revenue": 1000350
+  },
+  {
+    "period": "2024-07",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 80000,
+    "new_signings": 24,
+    "total_paying_customers": 375,
+    "avg_revenue_per_customer": 2900,
+    "revenue": 1087500
+  },
+  {
+    "period": "2024-08",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 80000,
+    "new_signings": 24,
+    "total_paying_customers": 399,
+    "avg_revenue_per_customer": 2950,
+    "revenue": 1177050
+  },
+  {
+    "period": "2024-09",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 85000,
+    "new_signings": 26,
+    "total_paying_customers": 425,
+    "avg_revenue_per_customer": 3000,
+    "revenue": 1275000
+  },
+  {
+    "period": "2024-10",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 85000,
+    "new_signings": 26,
+    "total_paying_customers": 451,
+    "avg_revenue_per_customer": 3050,
+    "revenue": 1375550
+  },
+  {
+    "period": "2024-11",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 85000,
+    "new_signings": 26,
+    "total_paying_customers": 477,
+    "avg_revenue_per_customer": 3100,
+    "revenue": 1478700
+  },
+  {
+    "period": "2024-12",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 90000,
+    "new_signings": 27,
+    "total_paying_customers": 504,
+    "avg_revenue_per_customer": 3150,
+    "revenue": 1587600
+  },
+  {
+    "period": "2025-01",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 90000,
+    "new_signings": 27,
+    "total_paying_customers": 531,
+    "avg_revenue_per_customer": 3200,
+    "revenue": 1700400
+  },
+  {
+    "period": "2025-02",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 90000,
+    "new_signings": 27,
+    "total_paying_customers": 558,
+    "avg_revenue_per_customer": 3250,
+    "revenue": 1813500
+  },
+  {
+    "period": "2025-03",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 95000,
+    "new_signings": 29,
+    "total_paying_customers": 587,
+    "avg_revenue_per_customer": 3300,
+    "revenue": 1937100
+  },
+  {
+    "period": "2025-04",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 95000,
+    "new_signings": 29,
+    "total_paying_customers": 616,
+    "avg_revenue_per_customer": 3350,
+    "revenue": 2063600
+  },
+  {
+    "period": "2025-05",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 95000,
+    "new_signings": 29,
+    "total_paying_customers": 645,
+    "avg_revenue_per_customer": 3400,
+    "revenue": 2193000
+  },
+  {
+    "period": "2025-06",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 100000,
+    "new_signings": 30,
+    "total_paying_customers": 675,
+    "avg_revenue_per_customer": 3450,
+    "revenue": 2328750
+  },
+  {
+    "period": "2025-07",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 100000,
+    "new_signings": 30,
+    "total_paying_customers": 705,
+    "avg_revenue_per_customer": 3500,
+    "revenue": 2467500
+  },
+  {
+    "period": "2025-08",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 100000,
+    "new_signings": 30,
+    "total_paying_customers": 735,
+    "avg_revenue_per_customer": 3550,
+    "revenue": 2609250
+  },
+  {
+    "period": "2025-09",
+    "unit": "Small and Medium",
+    "monthly_marketing_cost": 105000,
+    "new_signings": 32,
+    "total_paying_customers": 767,
+    "avg_revenue_per_customer": 3600,
+    "revenue": 2761200
+  }
+]

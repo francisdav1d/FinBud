@@ -1,0 +1,266 @@
+[
+  {
+    "month": "2023-01",
+    "combined_monthly_revenue": 327000,
+    "combined_monthly_new_signings": 18,
+    "total_paying_customers": 33,
+    "combined_monthly_marketing_budget": 130000.0,
+    "estimated_monthly_salary_cost_large_unit": 80000.0
+  },
+  {
+    "month": "2023-02",
+    "combined_monthly_revenue": 391500,
+    "combined_monthly_new_signings": 17,
+    "total_paying_customers": 50,
+    "combined_monthly_marketing_budget": 130000.0,
+    "estimated_monthly_salary_cost_large_unit": 80000.0
+  },
+  {
+    "month": "2023-03",
+    "combined_monthly_revenue": 499500,
+    "combined_monthly_new_signings": 21,
+    "total_paying_customers": 71,
+    "combined_monthly_marketing_budget": 155000.0,
+    "estimated_monthly_salary_cost_large_unit": 100000.0
+  },
+  {
+    "month": "2023-04",
+    "combined_monthly_revenue": 588500,
+    "combined_monthly_new_signings": 20,
+    "total_paying_customers": 91,
+    "combined_monthly_marketing_budget": 155000.0,
+    "estimated_monthly_salary_cost_large_unit": 100000.0
+  },
+  {
+    "month": "2023-05",
+    "combined_monthly_revenue": 699000,
+    "combined_monthly_new_signings": 21,
+    "total_paying_customers": 112,
+    "combined_monthly_marketing_budget": 155000.0,
+    "estimated_monthly_salary_cost_large_unit": 100000.0
+  },
+  {
+    "month": "2023-06",
+    "combined_monthly_revenue": 827550,
+    "combined_monthly_new_signings": 23,
+    "total_paying_customers": 135,
+    "combined_monthly_marketing_budget": 180000.0,
+    "estimated_monthly_salary_cost_large_unit": 120000.0
+  },
+  {
+    "month": "2023-07",
+    "combined_monthly_revenue": 949100,
+    "combined_monthly_new_signings": 22,
+    "total_paying_customers": 157,
+    "combined_monthly_marketing_budget": 180000.0,
+    "estimated_monthly_salary_cost_large_unit": 120000.0
+  },
+  {
+    "month": "2023-08",
+    "combined_monthly_revenue": 1082250,
+    "combined_monthly_new_signings": 23,
+    "total_paying_customers": 180,
+    "combined_monthly_marketing_budget": 180000.0,
+    "estimated_monthly_salary_cost_large_unit": 120000.0
+  },
+  {
+    "month": "2023-09",
+    "combined_monthly_revenue": 1249200,
+    "combined_monthly_new_signings": 26,
+    "total_paying_customers": 206,
+    "combined_monthly_marketing_budget": 205000.0,
+    "estimated_monthly_salary_cost_large_unit": 140000.0
+  },
+  {
+    "month": "2023-10",
+    "combined_monthly_revenue": 1391950,
+    "combined_monthly_new_signings": 25,
+    "total_paying_customers": 231,
+    "combined_monthly_marketing_budget": 205000.0,
+    "estimated_monthly_salary_cost_large_unit": 140000.0
+  },
+  {
+    "month": "2023-11",
+    "combined_monthly_revenue": 1531500,
+    "combined_monthly_new_signings": 24,
+    "total_paying_customers": 255,
+    "combined_monthly_marketing_budget": 205000.0,
+    "estimated_monthly_salary_cost_large_unit": 140000.0
+  },
+  {
+    "month": "2023-12",
+    "combined_monthly_revenue": 1688300,
+    "combined_monthly_new_signings": 26,
+    "total_paying_customers": 281,
+    "combined_monthly_marketing_budget": 230000.0,
+    "estimated_monthly_salary_cost_large_unit": 160000.0
+  },
+  {
+    "month": "2024-01",
+    "combined_monthly_revenue": 1865800,
+    "combined_monthly_new_signings": 27,
+    "total_paying_customers": 308,
+    "combined_monthly_marketing_budget": 230000.0,
+    "estimated_monthly_salary_cost_large_unit": 160000.0
+  },
+  {
+    "month": "2024-02",
+    "combined_monthly_revenue": 2025100,
+    "combined_monthly_new_signings": 26,
+    "total_paying_customers": 334,
+    "combined_monthly_marketing_budget": 230000.0,
+    "estimated_monthly_salary_cost_large_unit": 160000.0
+  },
+  {
+    "month": "2024-03",
+    "combined_monthly_revenue": 2227800,
+    "combined_monthly_new_signings": 30,
+    "total_paying_customers": 364,
+    "combined_monthly_marketing_budget": 255000.0,
+    "estimated_monthly_salary_cost_large_unit": 180000.0
+  },
+  {
+    "month": "2024-04",
+    "combined_monthly_revenue": 2420200,
+    "combined_monthly_new_signings": 29,
+    "total_paying_customers": 393,
+    "combined_monthly_marketing_budget": 255000.0,
+    "estimated_monthly_salary_cost_large_unit": 180000.0
+  },
+  {
+    "month": "2024-05",
+    "combined_monthly_revenue": 2629200,
+    "combined_monthly_new_signings": 30,
+    "total_paying_customers": 423,
+    "combined_monthly_marketing_budget": 255000.0,
+    "estimated_monthly_salary_cost_large_unit": 180000.0
+  },
+  {
+    "month": "2024-06",
+    "combined_monthly_revenue": 2826150,
+    "combined_monthly_new_signings": 30,
+    "total_paying_customers": 453,
+    "combined_monthly_marketing_budget": 280000.0,
+    "estimated_monthly_salary_cost_large_unit": 200000.0
+  },
+  {
+    "month": "2024-07",
+    "combined_monthly_revenue": 3049500,
+    "combined_monthly_new_signings": 31,
+    "total_paying_customers": 484,
+    "combined_monthly_marketing_budget": 280000.0,
+    "estimated_monthly_salary_cost_large_unit": 200000.0
+  },
+  {
+    "month": "2024-08",
+    "combined_monthly_revenue": 3289900,
+    "combined_monthly_new_signings": 32,
+    "total_paying_customers": 516,
+    "combined_monthly_marketing_budget": 280000.0,
+    "estimated_monthly_salary_cost_large_unit": 200000.0
+  },
+  {
+    "month": "2024-09",
+    "combined_monthly_revenue": 3519400,
+    "combined_monthly_new_signings": 33,
+    "total_paying_customers": 549,
+    "combined_monthly_marketing_budget": 305000.0,
+    "estimated_monthly_salary_cost_large_unit": 220000.0
+  },
+  {
+    "month": "2024-10",
+    "combined_monthly_revenue": 3777950,
+    "combined_monthly_new_signings": 34,
+    "total_paying_customers": 583,
+    "combined_monthly_marketing_budget": 305000.0,
+    "estimated_monthly_salary_cost_large_unit": 220000.0
+  },
+  {
+    "month": "2024-11",
+    "combined_monthly_revenue": 4022400,
+    "combined_monthly_new_signings": 33,
+    "total_paying_customers": 616,
+    "combined_monthly_marketing_budget": 305000.0,
+    "estimated_monthly_salary_cost_large_unit": 220000.0
+  },
+  {
+    "month": "2024-12",
+    "combined_monthly_revenue": 4292400,
+    "combined_monthly_new_signings": 35,
+    "total_paying_customers": 651,
+    "combined_monthly_marketing_budget": 330000.0,
+    "estimated_monthly_salary_cost_large_unit": 240000.0
+  },
+  {
+    "month": "2025-01",
+    "combined_monthly_revenue": 4567900,
+    "combined_monthly_new_signings": 35,
+    "total_paying_customers": 686,
+    "combined_monthly_marketing_budget": 330000.0,
+    "estimated_monthly_salary_cost_large_unit": 240000.0
+  },
+  {
+    "month": "2025-02",
+    "combined_monthly_revenue": 4826700,
+    "combined_monthly_new_signings": 34,
+    "total_paying_customers": 720,
+    "combined_monthly_marketing_budget": 330000.0,
+    "estimated_monthly_salary_cost_large_unit": 240000.0
+  },
+  {
+    "month": "2025-03",
+    "combined_monthly_revenue": 5116100,
+    "combined_monthly_new_signings": 37,
+    "total_paying_customers": 757,
+    "combined_monthly_marketing_budget": 355000.0,
+    "estimated_monthly_salary_cost_large_unit": 260000.0
+  },
+  {
+    "month": "2025-04",
+    "combined_monthly_revenue": 5428800,
+    "combined_monthly_new_signings": 38,
+    "total_paying_customers": 795,
+    "combined_monthly_marketing_budget": 355000.0,
+    "estimated_monthly_salary_cost_large_unit": 260000.0
+  },
+  {
+    "month": "2025-05",
+    "combined_monthly_revenue": 5727300,
+    "combined_monthly_new_signings": 37,
+    "total_paying_customers": 832,
+    "combined_monthly_marketing_budget": 355000.0,
+    "estimated_monthly_salary_cost_large_unit": 260000.0
+  },
+  {
+    "month": "2025-06",
+    "combined_monthly_revenue": 6014750,
+    "combined_monthly_new_signings": 37,
+    "total_paying_customers": 869,
+    "combined_monthly_marketing_budget": 380000.0,
+    "estimated_monthly_salary_cost_large_unit": 280000.0
+  },
+  {
+    "month": "2025-07",
+    "combined_monthly_revenue": 6325700,
+    "combined_monthly_new_signings": 38,
+    "total_paying_customers": 907,
+    "combined_monthly_marketing_budget": 380000.0,
+    "estimated_monthly_salary_cost_large_unit": 280000.0
+  },
+  {
+    "month": "2025-08",
+    "combined_monthly_revenue": 6660450,
+    "combined_monthly_new_signings": 39,
+    "total_paying_customers": 946,
+    "combined_monthly_marketing_budget": 380000.0,
+    "estimated_monthly_salary_cost_large_unit": 280000.0
+  },
+  {
+    "month": "2025-09",
+    "combined_monthly_revenue": 6987900,
+    "combined_monthly_new_signings": 40,
+    "total_paying_customers": 986,
+    "combined_monthly_marketing_budget": 405000.0,
+    "estimated_monthly_salary_cost_large_unit": 300000.0
+  }
+]
