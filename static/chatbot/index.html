@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Chatbot - Hackathon</title>
-    <link href="index.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>FinBud Chatbot</title>
+  <link rel="stylesheet" href="index.css">
 </head>
-<header>
-  <nav>
-    <div class="logo">Healix</div>
-    <div class="nav-links">
-      <a href="/Landing_Page/index.html">Home</a>
-      <a href="/stats/stat.html">Stat</a>
-      <a href="#">About</a>
-    </div>
-    <button class="signup-btn">Sign up for free</button>
-  </nav>
-</header>
 <body>
-    <div class="chat-container" >
-        <div class="messages" id="messages"></div>
-        <form class="input-area" id="chat-form">
-            <input type="text" id="user-input" placeholder="iMessage..." autocomplete="off" required />
-            <button type="submit">Send</button>
-        </form>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1>FinBud</h1>
+    <a href="/Landing_Page/index.html">Home</a>
+    <a href="/stats/stat.html">Stat</a>
+    <a href="#">Pitcher</a>
+    <a href="#">Market today</a>
+    <a href="#">Predictor</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h2>Ask Anything about your</h2>
+    <h1>Business</h1>
+
+    <!-- Chat Area -->
+    <div class="chat-container">
+      <div class="messages" id="messages"></div>
+      <form class="input-area" id="chat-form">
+        <input type="text" id="user-input" placeholder="Type here..." autocomplete="off" required />
+        <button class="send-btn" type="submit">➤</button>
+      </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="index.js"></script>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
