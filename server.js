@@ -24,28 +24,29 @@ if (!GOOGLE_API_KEY) {
     console.error("GOOGLE_API_KEY is not set. Please set the environment variable.");
     process.exit(1);
 }
-const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
+const AI = new GoogleGenerativeAI(GOOGLE_API_KEY);
 
 
-const classifierModel = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-const financialModel = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+const classifierModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+const financialModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 let KNOWLEDGE_BASE= fs.readFileSync('database/knowledgebase.json', 'utf8');
 let ACCOUNT_DATA=fs.readFileSync('database/data.json','utf8');
 
 
+//temp will might use this later
 
 //prompt for classsifer for gemini
-const CLASSIFIER_PROMPT = `You are a ai personell assistant to a company exec .
-Analyze the following user message and find its intent.
-Reply with one of the following labels only, and nothing else:
-* 'GREETING' if the message can just be answered with a greeting.
-* 'VALID' if the message is a question or statement isvalid or is apt for a advisor to a ceo would answer in a real life scenario.
-* 'KNOWLEDGE' if the user request needs the use of the knowledge base to find the company specific data.
-* 'IRRELEVANT' if the message is a question or statement unrelated or not professional to what a person in a corporate office would ask.
-USER_MSG:
-"{user_message}"
-Classification:
-`;
+// const CLASSIFIER_PROMPT = `You are a ai personell assistant to a company exec .
+// Analyze the following user message and find its intent.
+// Reply with one of the following labels only, and nothing else:
+// * 'GREETING' if the message can just be answered with a greeting.
+// * 'KNOWLEDGE' if the user request needs the use of the knowledge base to find the company specific data.
+// * 'VALID' if the message is a question or statement isvalid or is apt for a advisor to a ceo would answer in a real life scenario.
+// * 'IRRELEVANT' if the message is a question or statement unrelated or not professional to what a person in a corporate office would ask.
+// USER_MSG:
+// "{user_message}"
+// Classification:
+// `;
 
 /*
  * Classifies the intent of a user message using a lightweight model.
@@ -53,16 +54,42 @@ Classification:
  * @returns {Promise<string>} The classified intent label.
  */
 async function classifyIntent(message) {
-    try {
-        const prompt = CLASSIFIER_PROMPT.replace('{user_message}', message);
-        const result = await classifierModel.generateContent(prompt);
-        return result.response.text().trim().toUpperCase();
-    } catch (e) {
-        console.error("Error classifying intent:", e);
-        return 'IRRELEVANT';
-    }
-}
+  try {
+    const result = await classifierModel.generateContent({ 
+      contents: [
+        {
+          role: "model",
+          parts: [
+            {
+              text: `You are an AI assistant that classifies corporate user messages into intent categories.
 
+Labels:
+- GREETING: The message is a simple greeting or salutation (e.g., 'Hello', 'Good morning').
+- KNOWLEDGE: The message requests company-specific data or information that requires access to a knowledge base (e.g., financials, policies, performance data).
+- VALID: The message is a relevant professional question or statement that can be answer without any personel data or acess to databse.
+- IRRELEVANT: The message is unrelated, unprofessional, or not suitable for a corporate/executive context.
+
+Output format: Return only one label from the list: GREETING, KNOWLEDGE, VALID, or IRRELEVANT.`
+            }
+          ]
+        },
+        {
+          role: "user",
+          parts: [
+            {
+              text: message
+            }
+          ]
+        }
+      ]
+    });
+    const output = result.response.candidates[0].content.parts[0].text;
+    return output.trim().toUpperCase();
+  } catch (e) {
+    console.error("Error classifying intent:", e);
+    return "AI_DIDNT_WORK";
+  }
+}
 
 app.post('/chat', async (req, res) => {
     const userMessage = req.body.message;
