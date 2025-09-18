@@ -25,6 +25,11 @@
                 "revenue_per_customer": "Assumed average revenue per customer (can be variable)"
             },
             "formula": "(Marketing Spend / CAC) * Conversion Rate * Revenue per Customer"
+        },
+        "common_for_both":{
+            "logic":{
+                "projection":"assume progession to be constant from the previous year and calculate for that year"
+            }
         }
     }
 }

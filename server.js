@@ -25,6 +25,7 @@ app.use(express.json());
 
 
 app.use(express.static(path.join(__dirname, 'static')));
+app.use('/db', express.static(path.join(__dirname, 'database')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'static', 'Landing_Page', 'index.html'));
 });
@@ -40,7 +41,8 @@ const AI = new GoogleGenerativeAI(GOOGLE_API_KEY);
 
 const classifierModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 const financialModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-let KNOWLEDGE_BASE= fs.readFileSync('database/knowledgebase.json', 'utf8');
+const KNOWLEDGE_BASE= fs.readFileSync('database/knowledgebase.json', 'utf8');
+const ACCOUNT_DATA=fs.readFileSync('database/data.json','utf8');
 
 
 //temp will might use this later
@@ -112,14 +114,14 @@ app.post('/chat', async (req, res) => {
 
     if (intent.includes("VALID")) {
         replyFromAi = await financialModel.generateContent(
-            `You are a personal AI assistant to a Corporate person in power. Answer the following message (make it concise) and reply to this it in markdown format: ${userMessage}.`
+            `You are a personal AI assistant to a Corporate person in power. Answer the following message (make it concise without skipping any trivial data) and reply to this it in markdown format: ${userMessage}.`
         );
         replyFromAi = replyFromAi.response.text();
     } else if (intent.includes("GREETING")) {
         replyFromAi = "Hello! How can I assist you with your financial questions today?";
     } else if (intent.includes("KNOWLEDGE")) {
         replyFromAi = await financialModel.generateContent(
-            `Answer the user's request using only the following information: ${KNOWLEDGE_BASE}. User Request: ${userMessage}.`
+            `Answer the user's request using only the following information: ${ACCOUNT_DATA}. (refer ${KNOWLEDGE_BASE} for methods). User Request: ${userMessage}.`
         );
         replyFromAi = replyFromAi.response.text();
     } 
