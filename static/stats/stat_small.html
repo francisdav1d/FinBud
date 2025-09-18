@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinBot Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .info-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .chart-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        .accent-light { background-color: #cdeec6 !important; }
+        .accent-dark { background-color: #536e3e !important; }
+        .accent-text-light { color: #cdeec6 !important; }
+        .accent-text-dark { color: #536e3e !important; }
+        .accent-border-light { border-color: #cdeec6 !important; }
+        .accent-border-dark { border-color: #536e3e !important; }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 sm:p-8">
+    <nav class="bg-white shadow mb-8 rounded-lg accent-border-dark" style="border-bottom: 4px solid #536e3e;">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="/Landing_Page/index.html" class="text-2xl font-extrabold accent-text-dark">FinBud</a>
+            <div class="space-x-6">
+                <a href="/Landing_Page/index.html" class="text-gray-700 hover:accent-text-dark font-semibold">Home</a>
+                <a href="/stats/stat.html" class="text-gray-700 hover:accent-text-dark font-semibold">Stat</a>
+                <a href="#" class="text-gray-700 hover:accent-text-dark font-semibold">Pitcher</a>
+                <a href="#" class="text-gray-700 hover:accent-text-dark font-semibold">Predictor</a>
+            </div>
+        </div>
+    </nav>
+      
+    <div class="container mx-auto">
+        <header class="text-center mb-10">
+            <h1 id="companyName" class="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-tight mb-2"></h1>
+            <p id="marketRegion" class="text-lg text-gray-500 font-semibold"></p>
+        </header>
+
+        <section id="info-bars" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        </section>
+
+        <section id="charts" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Monthly Revenue Trend (Line Chart)</h2>
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Monthly Marketing Cost vs. Revenue (Bar Chart)</h2>
+                <canvas id="costVsRevenueChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Total Paying Customers (Doughnut Chart)</h2>
+                <canvas id="customersChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Average Revenue Per Customer (Polar Area Chart)</h2>
+                <canvas id="avgRevenueChart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.onload = function() {
+            fetch('/db/income_history_smc.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(companyData => {
+
+                    document.getElementById('companyName').textContent = companyData.company_name;
+                    document.getElementById('marketRegion').textContent = companyData.market_region;
+
+                    const history = companyData.business_units[0].monthly_history;
+                    const periods = history.map(item => item.period);
+                    const revenues = history.map(item => item.revenue);
+                    const newSignings = history.map(item => item.new_signings);
+                    const totalCustomers = history.map(item => item.total_paying_customers);
+                    const avgRevenues = history.map(item => item.avg_revenue_per_customer);
+                    const marketingCosts = history.map(item => item.monthly_marketing_cost);
+                    
+                    const totalRevenue = revenues.reduce((sum, current) => sum + current, 0);
+                    const latestCustomers = totalCustomers[totalCustomers.length - 1];
+                    const totalSignings = newSignings.reduce((sum, current) => sum + current, 0);
+                    const latestAvgRevenue = avgRevenues[avgRevenues.length - 1];
+                    const totalMarketingCost = marketingCosts.reduce((sum, current) => sum + current, 0);
+
+                    const formatCurrency = (num) => {
+                        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(num);
+                    };
+
+                    const infoBars = document.getElementById('info-bars');
+                    const infoBarData = [
+                        { title: "Total Revenue", value: formatCurrency(totalRevenue), icon: "fas fa-sack-dollar", color: "text-green-500" },
+                        { title: "Total New Signings", value: totalSignings, icon: "fas fa-user-plus", color: "text-blue-500" },
+                        { title: "Total Paying Customers", value: latestCustomers, icon: "fas fa-users", color: "text-purple-500" },
+                        { title: "Total Marketing Cost", value: formatCurrency(totalMarketingCost), icon: "fas fa-bullhorn", color: "text-red-500" }
+                    ];
+
+                    infoBarData.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'info-card p-6 flex flex-col items-center justify-center space-y-3';
+                        card.innerHTML = `
+                            <div class="rounded-full bg-gray-100 p-3 ${item.color}">
+                                <i class="${item.icon} text-2xl"></i>
+                            </div>
+                            <p class="text-sm font-semibold text-gray-500">${item.title}</p>
+                            <h3 class="text-2xl font-bold text-gray-800">${item.value}</h3>
+                        `;
+                        infoBars.appendChild(card);
+                    });
+
+                    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+                    new Chart(revenueCtx, {
+                        type: 'line',
+                        data: {
+                            labels: periods,
+                            datasets: [{
+                                label: 'Monthly Revenue',
+                                data: revenues,
+                                borderColor: '#3B82F6',
+                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                fill: true,
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                title: { display: true, text: 'Monthly Revenue' }
+                            },
+                            scales: {
+                                y: { beginAtZero: false, ticks: { callback: (value) => formatCurrency(value) } }
+                            }
+                        }
+                    });
+
+                    const costVsRevenueCtx = document.getElementById('costVsRevenueChart').getContext('2d');
+                    new Chart(costVsRevenueCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: periods,
+                            datasets: [
+                                {
+                                    label: 'Monthly Marketing Cost',
+                                    data: marketingCosts,
+                                    backgroundColor: '#DC2626',
+                                    borderRadius: 6
+                                },
+                                {
+                                    label: 'Monthly Revenue',
+                                    data: revenues,
+                                    backgroundColor: '#16A34A',
+                                    borderRadius: 6
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'bottom' },
+                                title: { display: true, text: 'Marketing Cost vs. Revenue' }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, ticks: { callback: (value) => formatCurrency(value) } }
+                            }
+                        }
+                    });
+
+                    const customersCtx = document.getElementById('customersChart').getContext('2d');
+                    new Chart(customersCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Paying Customers', 'New Signings Last Month'],
+                            datasets: [{
+                                data: [latestCustomers - newSignings[newSignings.length - 1], newSignings[newSignings.length - 1]],
+                                backgroundColor: ['#6366F1', '#EC4899'],
+                                hoverOffset: 8,
+                                borderRadius: 4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'bottom' },
+                                title: { display: true, text: 'Customer Breakdown' }
+                            }
+                        }
+                    });
+
+                    const avgRevenueCtx = document.getElementById('avgRevenueChart').getContext('2d');
+                    new Chart(avgRevenueCtx, {
+                        type: 'polarArea',
+                        data: {
+                            labels: periods,
+                            datasets: [{
+                                data: avgRevenues,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(199, 199, 199, 0.6)',
+                                    'rgba(83, 102, 255, 0.6)',
+                                    'rgba(40, 159, 132, 0.6)'
+                                ]
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'right' },
+                                title: { display: true, text: 'Average Revenue per Customer' }
+                            },
+                            scales: {
+                                r: { ticks: { display: false } }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        };
+    </script>
+</body>
+</html>

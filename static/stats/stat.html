@@ -2,11 +2,270 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stats</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>FinBot Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .info-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .chart-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        /* Accent colors */
+        .accent-light { background-color: #cdeec6 !important; }
+        .accent-dark { background-color: #536e3e !important; }
+        .accent-text-light { color: #cdeec6 !important; }
+        .accent-text-dark { color: #536e3e !important; }
+        .accent-border-light { border-color: #cdeec6 !important; }
+        .accent-border-dark { border-color: #536e3e !important; }
+    </style>
 </head>
-<body>
-    
+<body class="bg-gray-100 p-4 sm:p-8">
+    <nav class="bg-white shadow mb-8 rounded-lg accent-border-dark" style="border-bottom: 4px solid #536e3e;">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="/Landing_Page/index.html" class="text-2xl font-extrabold accent-text-dark">FinBud</a>
+            <div class="space-x-6">
+                <a href="/Landing_Page/index.html" class="text-gray-700 hover:accent-text-dark font-semibold">Home</a>
+                <a href="/stats/stat_small.html" class="text-gray-700 hover:accent-text-dark font-semibold">Stat SMC</a>
+                <a href="#" class="text-gray-700 hover:accent-text-dark font-semibold">Pitcher</a>
+                <!-- <a href="/stocks/index.html" class="text-gray-700 hover:accent-text-dark font-semibold">Market today</a> -->
+                <a href="#" class="text-gray-700 hover:accent-text-dark font-semibold">Predictor</a>
+            </div>
+        </div>
+    </nav>
+      
+    <div class="container mx-auto">
+        <!-- Dashboard Header -->
+        <header class="text-center mb-10">
+            <h1 id="companyName" class="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-tight mb-2"></h1>
+            <p id="marketRegion" class="text-lg text-gray-500 font-semibold"></p>
+        </header>
+
+        <!-- Info Bars Section -->
+        <section id="info-bars" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <!-- Info cards will be populated by JavaScript -->
+        </section>
+
+        <!-- Charts Section -->
+        <section id="charts" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Monthly Revenue Trend (Line Chart)</h2>
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">New Signings vs. Sales Executives (Bar Chart)</h2>
+                <canvas id="signingsChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Total Paying Customers (Doughnut Chart)</h2>
+                <canvas id="customersChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Average Revenue Per Customer (Polar Area Chart)</h2>
+                <canvas id="avgRevenueChart"></canvas>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- dat handling-->
+    <script>
+        window.onload = function() {
+            // Fetch JSON data from a local file.
+            fetch('/db/income_history_large.json')
+                .then(response => {
+                    // Check if the network response was successful
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(companyData => {
+
+                    document.getElementById('companyName').textContent = companyData.company_name;
+                    document.getElementById('marketRegion').textContent = companyData.market_region;
+
+                    const history = companyData.business_units[0].monthly_history;
+                    const periods = history.map(item => item.period);
+                    const revenues = history.map(item => item.revenue);
+                    const newSignings = history.map(item => item.new_signings);
+                    const totalCustomers = history.map(item => item.total_paying_customers);
+                    const avgRevenues = history.map(item => item.avg_revenue_per_customer);
+                    const salesExecutives = history.map(item => item.sales_executives);
+                    
+                    const totalRevenue = revenues.reduce((sum, current) => sum + current, 0);
+                    const latestCustomers = totalCustomers[totalCustomers.length - 1];
+                    const totalSignings = newSignings.reduce((sum, current) => sum + current, 0);
+                    const latestAvgRevenue = avgRevenues[avgRevenues.length - 1];
+
+                    // Function to format numbers as currency
+                    const formatCurrency = (num) => {
+                        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(num);
+                    };
+
+                    // Render info bars at the top
+                    const infoBars = document.getElementById('info-bars');
+                    const infoBarData = [
+                        { title: "Total Revenue", value: formatCurrency(totalRevenue), icon: "fas fa-sack-dollar", color: "text-green-500" },
+                        { title: "Total New Signings", value: totalSignings, icon: "fas fa-user-plus", color: "text-blue-500" },
+                        { title: "Total Paying Customers", value: latestCustomers, icon: "fas fa-users", color: "text-purple-500" },
+                        { title: "Avg. Revenue/Customer", value: formatCurrency(latestAvgRevenue), icon: "fas fa-money-check-dollar", color: "text-yellow-500" }
+                    ];
+
+                    infoBarData.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'info-card p-6 flex flex-col items-center justify-center space-y-3';
+                        card.innerHTML = `
+                            <div class="rounded-full bg-gray-100 p-3 ${item.color}">
+                                <i class="${item.icon} text-2xl"></i>
+                            </div>
+                            <p class="text-sm font-semibold text-gray-500">${item.title}</p>
+                            <h3 class="text-2xl font-bold text-gray-800">${item.value}</h3>
+                        `;
+                        infoBars.appendChild(card);
+                    });
+
+                    // 1. Line Chart: Monthly Revenue
+                    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+                    new Chart(revenueCtx, {
+                        type: 'line',
+                        data: {
+                            labels: periods,
+                            datasets: [{
+                                label: 'Monthly Revenue',
+                                data: revenues,
+                                borderColor: '#3B82F6',
+                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                fill: true,
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                title: { display: true, text: 'Monthly Revenue' }
+                            },
+                            scales: {
+                                y: { beginAtZero: false, ticks: { callback: (value) => formatCurrency(value) } }
+                            }
+                        }
+                    });
+
+                    // 2. Bar Chart: New Signings vs. Sales Executives
+                    const signingsCtx = document.getElementById('signingsChart').getContext('2d');
+                    new Chart(signingsCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: periods,
+                            datasets: [
+                                {
+                                    label: 'New Signings',
+                                    data: newSignings,
+                                    backgroundColor: '#10B981',
+                                    borderRadius: 6
+                                },
+                                {
+                                    label: 'Sales Executives',
+                                    data: salesExecutives,
+                                    backgroundColor: '#F59E0B',
+                                    borderRadius: 6
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'bottom' },
+                                title: { display: true, text: 'Signings vs. Sales Executives' }
+                            },
+                            scales: {
+                                y: { beginAtZero: true }
+                            }
+                        }
+                    });
+
+                    // 3. Doughnut Chart: Total Paying Customers
+                    const customersCtx = document.getElementById('customersChart').getContext('2d');
+                    // This chart will show the latest number of customers
+                    new Chart(customersCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Paying Customers', 'New Signings Last Month'],
+                            datasets: [{
+                                data: [latestCustomers - newSignings[newSignings.length - 1], newSignings[newSignings.length - 1]],
+                                backgroundColor: ['#6366F1', '#EC4899'],
+                                hoverOffset: 8,
+                                borderRadius: 4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'bottom' },
+                                title: { display: true, text: 'Customer Breakdown' }
+                            }
+                        }
+                    });
+
+                    // 4. Polar Area Chart: Average Revenue per Customer
+                    const avgRevenueCtx = document.getElementById('avgRevenueChart').getContext('2d');
+                    new Chart(avgRevenueCtx, {
+                        type: 'polarArea',
+                        data: {
+                            labels: periods,
+                            datasets: [{
+                                data: avgRevenues,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(199, 199, 199, 0.6)',
+                                    'rgba(83, 102, 255, 0.6)',
+                                    'rgba(40, 159, 132, 0.6)'
+                                ]
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'right' },
+                                title: { display: true, text: 'Average Revenue per Customer' }
+                            },
+                            scales: {
+                                r: { ticks: { display: false } }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    // Log any errors that occur during the fetch operation
+                    console.error('Error fetching data:', error);
+                });
+        };
+    </script>
 </body>
 </html>

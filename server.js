@@ -5,7 +5,7 @@ const fs=require('fs');
 const dotenv = require('dotenv');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const mongoose = require("mongoose");
-
+const rp = require('request-promise');
 
 dotenv.config();
 const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/hackathonDB";
@@ -41,8 +41,12 @@ const AI = new GoogleGenerativeAI(GOOGLE_API_KEY);
 
 const classifierModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 const financialModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+
+//read database
+
 const KNOWLEDGE_BASE= fs.readFileSync('database/knowledgebase.json', 'utf8');
-const ACCOUNT_DATA=fs.readFileSync('database/data.json','utf8');
+const LARGE_ACCOUNT_DATA=fs.readFileSync('database/income_history_large.json','utf8');
+const SMC_ACCOUNT_DATA=fs.readFileSync('database/income_history_smc.json','utf8')
 
 
 //temp will might use this later
@@ -121,7 +125,7 @@ app.post('/chat', async (req, res) => {
         replyFromAi = "Hello! How can I assist you with your financial questions today?";
     } else if (intent.includes("KNOWLEDGE")) {
         replyFromAi = await financialModel.generateContent(
-            `Answer the user's request using only the following information: ${ACCOUNT_DATA}. (refer ${KNOWLEDGE_BASE} for methods). User Request: ${userMessage}.`
+            `Answer the user's request using only the following information: ${LARGE_ACCOUNT_DATA}. (refer ${KNOWLEDGE_BASE} for methods). User Request: ${userMessage}.`
         );
         replyFromAi = replyFromAi.response.text();
     } 
@@ -152,11 +156,11 @@ app.post('/upload-knowledgebase', async (req, res) => {
   try {
     const knowledgeBaseData = JSON.parse(KNOWLEDGE_BASE);
 
-    // Define a Mongoose schema/model if not already defined
+
     const knowledgeSchema = new mongoose.Schema({}, { strict: false });
     const Knowledge = mongoose.models.Knowledge || mongoose.model('Knowledge', knowledgeSchema);
 
-    // Remove existing documents (optional, if you want to replace)
+
     await Knowledge.deleteMany({});
 
     // Insert new data
@@ -172,6 +176,7 @@ app.post('/upload-knowledgebase', async (req, res) => {
     res.status(500).json({ success: false, error: 'Failed to upload knowledge base.' });
   }
 });
+
 // server starter
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
