@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finbud Pricing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .heading-font {
+      font-family: 'Playfair Display', serif;
+    }
+    .body-font {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #c4d0b1;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-black text-white font-sans relative overflow-hidden body-font">
+
+  <!-- Background -->
+  <div class="absolute inset-0 -z-10">
+    <img src="background.png" alt="Background" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- Content Wrapper -->
+  <div class="relative flex flex-col items-center justify-center min-h-screen px-6 text-center">
+
+    <!-- Logo -->
+    <div class="text-2xl font-semibold text-green-100 absolute top-12 left-12 heading-font" id="logo">FinBud</div>
+    <!-- Heading -->
+    <h1 class="text-5xl md:text-7xl font-bold leading-tight text-green-100 heading-font">
+      Prices <span class="italic font-light">cheaper</span><br /> than a meal
+    </h1>
+
+    <!-- CTA Button -->
+    <div class="mt-8">
+      <button class="backdrop-blur-xl bg-white/10 text-green-100 px-8 py-3 rounded-2xl border border-white/20 hover:bg-white/20 transition body-font">
+        choose a plan
+      </button>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl w-full">
+
+      <!-- Basic Plan -->
+      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left">
+        <h3 class="text-2xl font-semibold mb-2 heading-font">Basic</h3>
+        <p class="text-gray-300 mb-6">For individuals starting their wellness journey.</p>
+        <p class="text-4xl font-bold mb-6">$9<span class="text-lg font-normal">/month</span></p>
+        <ul class="space-y-3 flex-1">
+          <li>✓ Personalized daily affirmations</li>
+          <li>✓ Mood tracking & journaling</li>
+          <li>✓ Access to community forums</li>
+        </ul>
+        <button class="mt-8 w-full py-3 rounded-xl bg-black/70 text-white hover:bg-black/90 transition">
+          Choose Plan
+        </button>
+      </div>
+
+      <!-- Pro Plan (green removed) -->
+      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left">
+        <h3 class="text-2xl font-semibold mb-2 heading-font">Pro</h3>
+        <p class="text-gray-300 mb-6">For those committed to growth and deeper insights.</p>
+        <p class="text-4xl font-bold mb-6">$19<span class="text-lg font-normal">/month</span></p>
+        <ul class="space-y-3 flex-1">
+          <li>✓ All features from Basic</li>
+          <li>✓ Guided audio & video meditations</li>
+          <li>✓ Monthly progress reports</li>
+          <li>✓ Advanced analytics</li>
+        </ul>
+        <button class="mt-8 w-full py-3 rounded-xl bg-black/70 text-white hover:bg-black/90 transition">
+          Choose Plan
+        </button>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left">
+        <h3 class="text-2xl font-semibold mb-2 heading-font">Premium</h3>
+        <p class="text-gray-300 mb-6">For a complete wellness and mind-body overhaul.</p>
+        <p class="text-4xl font-bold mb-6">$49<span class="text-lg font-normal">/month</span></p>
+        <ul class="space-y-3 flex-1">
+          <li>✓ All features from Pro</li>
+          <li>✓ Weekly one-on-one virtual coaching</li>
+          <li>✓ Personalized wellness plan</li>
+          <li>✓ Priority support</li>
+        </ul>
+        <button class="mt-8 w-full py-3 rounded-xl bg-black/70 text-white hover:bg-black/90 transition">
+          Choose Plan
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
