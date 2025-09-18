@@ -1,0 +1,30 @@
+{
+    "company_type": "SaaS",
+    "business_units": [
+        {"name": "Large Customers", "key": "large"},
+        {"name": "Small and Medium Customers", "key": "smb"}
+    ],
+    "go_to_market": {
+        "large_customers": {
+            "strategy": "Direct Sales",
+            "revenue_driver": "Number of Sales Executives",
+            "logic": {
+                "sales_executives": "Can be added monthly (assumed initial count and ramp-up rate)",
+                "customers_per_exec": "1-2 customers/month per Sales Executive",
+                "revenue_per_customer": "$16,500 per month"
+            },
+            "formula": "# of Sales Executives * Customers per Exec * Revenue per Customer"
+        },
+        "smb_customers": {
+            "strategy": "Inbound Marketing",
+            "revenue_driver": "Marketing Spend",
+            "logic": {
+                "marketing_spend": "Assumed average marketing cost per month",
+                "customer_acquisition_cost": "Assumed average CAC of $1,500",
+                "conversion_rate": "Assumed average conversion rate of 45% (from demo to paying customer)",
+                "revenue_per_customer": "Assumed average revenue per customer (can be variable)"
+            },
+            "formula": "(Marketing Spend / CAC) * Conversion Rate * Revenue per Customer"
+        }
+    }
+}
