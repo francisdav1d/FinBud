@@ -1,0 +1,552 @@
+{
+  "company_name": "Healix",
+  "market_region": "Canada",
+  "history": [
+    {
+      "period": "2023-01",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 4,
+          "new_signings": 3,
+          "total_paying_customers": 18,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 297000
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 12000,
+          "leads": 800,
+          "demos": 240,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 108,
+          "total_paying_customers": 450,
+          "avg_revenue_per_customer": 220,
+          "revenue": 99000
+        }
+      ],
+      "total_revenue": 396000
+    },
+    {
+      "period": "2023-02",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 5,
+          "new_signings": 4,
+          "total_paying_customers": 22,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 363000
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 15000,
+          "leads": 950,
+          "demos": 285,
+          "demo_to_customer_pct": 0.44,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 125,
+          "total_paying_customers": 575,
+          "avg_revenue_per_customer": 220,
+          "revenue": 126500
+        }
+      ],
+      "total_revenue": 489500
+    },
+    {
+      "period": "2023-03",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 6,
+          "new_signings": 5,
+          "total_paying_customers": 27,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 445500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 18000,
+          "leads": 1100,
+          "demos": 330,
+          "demo_to_customer_pct": 0.46,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 152,
+          "total_paying_customers": 727,
+          "avg_revenue_per_customer": 220,
+          "revenue": 159940
+        }
+      ],
+      "total_revenue": 605440
+    },
+    {
+      "period": "2023-04",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 7,
+          "new_signings": 6,
+          "total_paying_customers": 33,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 544500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 20000,
+          "leads": 1200,
+          "demos": 360,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 162,
+          "total_paying_customers": 889,
+          "avg_revenue_per_customer": 220,
+          "revenue": 195580
+        }
+      ],
+      "total_revenue": 740080
+    },
+    {
+      "period": "2023-05",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 8,
+          "new_signings": 7,
+          "total_paying_customers": 40,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 660000
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 22000,
+          "leads": 1350,
+          "demos": 405,
+          "demo_to_customer_pct": 0.46,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 186,
+          "total_paying_customers": 1075,
+          "avg_revenue_per_customer": 220,
+          "revenue": 236500
+        }
+      ],
+      "total_revenue": 896500
+    },
+    {
+      "period": "2023-06",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 9,
+          "new_signings": 9,
+          "total_paying_customers": 49,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 808500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 25000,
+          "leads": 1500,
+          "demos": 450,
+          "demo_to_customer_pct": 0.44,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 198,
+          "total_paying_customers": 1273,
+          "avg_revenue_per_customer": 220,
+          "revenue": 280060
+        }
+      ],
+      "total_revenue": 1088560
+    },
+    {
+      "period": "2023-07",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 10,
+          "new_signings": 11,
+          "total_paying_customers": 60,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 990000
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 26000,
+          "leads": 1600,
+          "demos": 480,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 216,
+          "total_paying_customers": 1489,
+          "avg_revenue_per_customer": 220,
+          "revenue": 327580
+        }
+      ],
+      "total_revenue": 1317580
+    },
+    {
+      "period": "2023-08",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 11,
+          "new_signings": 9,
+          "total_paying_customers": 69,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 1138500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 24000,
+          "leads": 1550,
+          "demos": 465,
+          "demo_to_customer_pct": 0.43,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 200,
+          "total_paying_customers": 1689,
+          "avg_revenue_per_customer": 220,
+          "revenue": 371580
+        }
+      ],
+      "total_revenue": 1510080
+    },
+    {
+      "period": "2023-09",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 12,
+          "new_signings": 10,
+          "total_paying_customers": 79,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 1303500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 26000,
+          "leads": 1650,
+          "demos": 495,
+          "demo_to_customer_pct": 0.44,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 218,
+          "total_paying_customers": 1907,
+          "avg_revenue_per_customer": 220,
+          "revenue": 419540
+        }
+      ],
+      "total_revenue": 1723040
+    },
+    {
+      "period": "2023-10",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 13,
+          "new_signings": 12,
+          "total_paying_customers": 91,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 1501500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 27000,
+          "leads": 1700,
+          "demos": 510,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 230,
+          "total_paying_customers": 2137,
+          "avg_revenue_per_customer": 220,
+          "revenue": 470140
+        }
+      ],
+      "total_revenue": 1971640
+    },
+    {
+      "period": "2023-11",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 14,
+          "new_signings": 14,
+          "total_paying_customers": 105,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 1732500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 28000,
+          "leads": 1750,
+          "demos": 525,
+          "demo_to_customer_pct": 0.46,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 242,
+          "total_paying_customers": 2379,
+          "avg_revenue_per_customer": 220,
+          "revenue": 523380
+        }
+      ],
+      "total_revenue": 2255880
+    },
+    {
+      "period": "2023-12",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 15,
+          "new_signings": 13,
+          "total_paying_customers": 118,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 1947000
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 30000,
+          "leads": 1900,
+          "demos": 570,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 256,
+          "total_paying_customers": 2635,
+          "avg_revenue_per_customer": 220,
+          "revenue": 579700
+        }
+      ],
+      "total_revenue": 2526700
+    },
+    {
+      "period": "2024-01",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 16,
+          "new_signings": 16,
+          "total_paying_customers": 134,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 2211000
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 31000,
+          "leads": 1950,
+          "demos": 585,
+          "demo_to_customer_pct": 0.46,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 269,
+          "total_paying_customers": 2904,
+          "avg_revenue_per_customer": 220,
+          "revenue": 638880
+        }
+      ],
+      "total_revenue": 2849880
+    },
+    {
+      "period": "2024-02",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 17,
+          "new_signings": 15,
+          "total_paying_customers": 149,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 2458500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 30000,
+          "leads": 1900,
+          "demos": 570,
+          "demo_to_customer_pct": 0.44,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 251,
+          "total_paying_customers": 3155,
+          "avg_revenue_per_customer": 220,
+          "revenue": 694100
+        }
+      ],
+      "total_revenue": 3152600
+    },
+    {
+      "period": "2024-03",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 18,
+          "new_signings": 18,
+          "total_paying_customers": 167,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 2755500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 32000,
+          "leads": 2000,
+          "demos": 600,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 270,
+          "total_paying_customers": 3425,
+          "avg_revenue_per_customer": 220,
+          "revenue": 753500
+        }
+      ],
+      "total_revenue": 3509000
+    },
+    {
+      "period": "2024-04",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 19,
+          "new_signings": 20,
+          "total_paying_customers": 187,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 3085500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 33000,
+          "leads": 2100,
+          "demos": 630,
+          "demo_to_customer_pct": 0.46,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 290,
+          "total_paying_customers": 3715,
+          "avg_revenue_per_customer": 220,
+          "revenue": 817300
+        }
+      ],
+      "total_revenue": 3902800
+    },
+    {
+      "period": "2024-05",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 20,
+          "new_signings": 18,
+          "total_paying_customers": 205,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 3382500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 34000,
+          "leads": 2200,
+          "demos": 660,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 297,
+          "total_paying_customers": 4012,
+          "avg_revenue_per_customer": 220,
+          "revenue": 882640
+        }
+      ],
+      "total_revenue": 4265140
+    },
+    {
+      "period": "2024-06",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 21,
+          "new_signings": 20,
+          "total_paying_customers": 225,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 3712500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 36000,
+          "leads": 2300,
+          "demos": 690,
+          "demo_to_customer_pct": 0.44,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 304,
+          "total_paying_customers": 4316,
+          "avg_revenue_per_customer": 220,
+          "revenue": 948
+        }
+      ],
+      "total_revenue": null
+    },
+    {
+      "period": "2024-07",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 22,
+          "new_signings": 22,
+          "total_paying_customers": 247,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 4075500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 37000,
+          "leads": 2350,
+          "demos": 705,
+          "demo_to_customer_pct": 0.46,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 324,
+          "total_paying_customers": 4640,
+          "avg_revenue_per_customer": 220,
+          "revenue": 1020800
+        }
+      ],
+      "total_revenue": 5096300
+    },
+    {
+      "period": "2024-08",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 23,
+          "new_signings": 20,
+          "total_paying_customers": 267,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 4405500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 38000,
+          "leads": 2400,
+          "demos": 720,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 324,
+          "total_paying_customers": 4964,
+          "avg_revenue_per_customer": 220,
+          "revenue": 1092080
+        }
+      ],
+      "total_revenue": 5497580
+    },
+    {
+      "period": "2024-09",
+      "business_units": [
+        {
+          "unit": "Large",
+          "sales_executives": 24,
+          "new_signings": 24,
+          "total_paying_customers": 291,
+          "avg_revenue_per_customer": 16500,
+          "revenue": 4801500
+        },
+        {
+          "unit": "SMB",
+          "marketing_spend": 40000,
+          "leads": 2550,
+          "demos": 765,
+          "demo_to_customer_pct": 0.45,
+          "CAC": 1500,
+          "paying_customers_from_marketing": 344,
+          "total_paying_customers": 5308,
+          "avg_revenue_per_customer": 220,
+          "revenue": 1168
+        }
+      ],
+      "total_revenue": null
+    }
+  ]
+}

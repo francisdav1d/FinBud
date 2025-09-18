@@ -30,6 +30,7 @@ const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
 const classifierModel = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 const financialModel = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 let KNOWLEDGE_BASE= fs.readFileSync('database/knowledgebase.json', 'utf8');
+let ACCOUNT_DATA=fs.readFileSync('database/data.json','utf8');
 
 
 
@@ -80,7 +81,7 @@ app.post('/chat', async (req, res) => {
         replyFromAi = "Hello! How can I assist you with your financial questions today?";
     } else if (intent.includes("KNOWLEDGE")) {
         replyFromAi = await financialModel.generateContent(
-            `Answer the user's request using only the following information: ${KNOWLEDGE_BASE}. User Request: ${userMessage}.`
+            `Answer the user's request using only the following information: ${ACCOUNT_DATA}. User Request: ${userMessage}.`
         );
         replyFromAi = replyFromAi.response.text();
     } else {
