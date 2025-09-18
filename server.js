@@ -4,10 +4,18 @@ const path = require('path');
 const fs=require('fs');
 const dotenv = require('dotenv');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const mongoose = require("mongoose");
 
 
 dotenv.config();
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/hackathonDB";
 
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("Connected to MongoDB"))
+.catch(err => console.error("MongoDB connection error:", err));
 
 const app = express();
 const port = 3000;
@@ -16,7 +24,10 @@ const port = 3000;
 app.use(express.json());
 
 
-app.use(express.static(path.join(__dirname, 'static/chatbot')));
+app.use(express.static(path.join(__dirname, 'static')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'static', 'Landing_Page', 'index.html'));
+});
 
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
@@ -30,7 +41,6 @@ const AI = new GoogleGenerativeAI(GOOGLE_API_KEY);
 const classifierModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 const financialModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 let KNOWLEDGE_BASE= fs.readFileSync('database/knowledgebase.json', 'utf8');
-let ACCOUNT_DATA=fs.readFileSync('database/data.json','utf8');
 
 
 //temp will might use this later
@@ -109,7 +119,7 @@ app.post('/chat', async (req, res) => {
         replyFromAi = "Hello! How can I assist you with your financial questions today?";
     } else if (intent.includes("KNOWLEDGE")) {
         replyFromAi = await financialModel.generateContent(
-            `Answer the user's request using only the following information: ${ACCOUNT_DATA}. User Request: ${userMessage}.`
+            `Answer the user's request using only the following information: ${KNOWLEDGE_BASE}. User Request: ${userMessage}.`
         );
         replyFromAi = replyFromAi.response.text();
     } 
