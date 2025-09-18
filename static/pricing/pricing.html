@@ -25,6 +25,10 @@
       font-weight: bold;
       color: #c4d0b1;
     }
+    .priceholder :hover
+    {
+      opacity: 70%;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-black text-white font-sans relative overflow-hidden body-font">
@@ -36,7 +40,7 @@
   </div>
 
   <!-- Content Wrapper -->
-  <div class="relative flex flex-col items-center justify-center min-h-screen px-6 text-center">
+  <div class="relative flex flex-col items-center justify-center min-h-screen px-6 text-center ">
 
     <!-- Logo -->
     <div class="text-2xl font-semibold text-green-100 absolute top-12 left-12 heading-font" id="logo">FinBud</div>
@@ -53,10 +57,10 @@
     </div>
 
     <!-- Pricing Cards -->
-    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl w-full">
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl w-full priceholder">
 
       <!-- Basic Plan -->
-      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left">
+      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left pricecard">
         <h3 class="text-2xl font-semibold mb-2 heading-font">Basic</h3>
         <p class="text-gray-300 mb-6">For individuals starting their wellness journey.</p>
         <p class="text-4xl font-bold mb-6">$9<span class="text-lg font-normal">/month</span></p>
@@ -71,7 +75,7 @@
       </div>
 
       <!-- Pro Plan (green removed) -->
-      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left">
+      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left pricecard">
         <h3 class="text-2xl font-semibold mb-2 heading-font">Pro</h3>
         <p class="text-gray-300 mb-6">For those committed to growth and deeper insights.</p>
         <p class="text-4xl font-bold mb-6">$19<span class="text-lg font-normal">/month</span></p>
@@ -87,7 +91,7 @@
       </div>
 
       <!-- Premium Plan -->
-      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left">
+      <div class="h-[540px] rounded-3xl backdrop-blur-2xl bg-white/10 border border-white/10 shadow-lg flex flex-col p-8 text-left pricecard">
         <h3 class="text-2xl font-semibold mb-2 heading-font">Premium</h3>
         <p class="text-gray-300 mb-6">For a complete wellness and mind-body overhaul.</p>
         <p class="text-4xl font-bold mb-6">$49<span class="text-lg font-normal">/month</span></p>
@@ -106,4 +110,8 @@
   </div>
 
 </body>
+<script>
+  const logo=document.getElementById("logo");
+  logo.addEventListener("click",()=>{window.location.replace("/Landing_Page/index.html")})
+</script>
 </html>

@@ -18,7 +18,7 @@
 
   <!-- Navbar -->
   <header class="flex items-center justify-between px-8 py-4 absolute w-full z-10">
-    <div class="text-xl font-bold">Finbud</div>
+    <div  id ="logo" class="text-xl font-bold">Finbud</div>
     <nav class="flex items-center space-x-8 text-sm">
       <a href="/chatbot/index.html" class="hover:text-green-300">Features</a>
       <a href="/pricing/pricing.html" class="hover:text-green-300">Pricing</a>
@@ -90,4 +90,8 @@
   </footer>
 
 </body>
+<script>
+  const logo=document.getElementById("logo");
+  logo.addEventListener("click",()=>{window.location.replace("/Landing_Page/index.html")})
+</script>
 </html>
