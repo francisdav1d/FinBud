@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FinBud Revenue Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .accent-light { background-color: #cdeec6 !important; }
+        .accent-dark { background-color: #536e3e !important; }
+        .accent-text-dark { color: #536e3e !important; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+    <nav class="bg-white shadow mb-8 rounded-lg accent-border-dark" style="border-bottom: 4px solid #536e3e;">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="/Landing_Page/index.html" class="text-2xl font-extrabold accent-text-dark">FinBud</a>
+            <div class="space-x-6">
+                <a href="/Landing_Page/index.html" class="text-gray-700 hover:accent-text-dark font-semibold">Home</a>
+                <a href="/stats/stat.html" class="text-gray-700 hover:accent-text-dark font-semibold">Stat</a>
+                <a href="#" class="text-gray-700 hover:accent-text-dark font-semibold">Pitcher</a>
+                <a href="#" class="text-gray-700 hover:accent-text-dark font-semibold">Predictor</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto max-w-3xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold accent-text-dark mb-2">Revenue Prediction</h1>
+            <p class="text-lg text-gray-600">Forecast for next year's revenue based on historical data</p>
+        </header>
+        <section id="prediction-section" class="bg-white rounded-lg shadow p-6 accent-light">
+            <h2 class="text-2xl font-bold accent-text-dark mb-4">Predicted Revenue (Next 12 Months)</h2>
+            <div id="prediction-results" class="mb-6"></div>
+            <canvas id="predictionChart"></canvas>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        async function fetchJSON(path) {
+            const response = await fetch(path);
+            return await response.json();
+        }
+
+        function linearGrowth(history, key) {
+            // Simple linear regression for prediction
+            const n = history.length;
+            const x = [...Array(n).keys()];
+            const y = history.map(item => item[key]);
+            const sumX = x.reduce((a, b) => a + b, 0);
+            const sumY = y.reduce((a, b) => a + b, 0);
+            const sumXY = x.reduce((a, b, i) => a + b * y[i], 0);
+            const sumXX = x.reduce((a, b) => a + b * b, 0);
+
+            const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+            const intercept = (sumY - slope * sumX) / n;
+
+            // Predict next 12 months
+            const predictions = [];
+            for (let i = n; i < n + 12; i++) {
+                predictions.push(Math.round(slope * i + intercept));
+            }
+            return predictions;
+        }
+
+        function nextMonths(lastPeriod, count) {
+            // lastPeriod: "2025-09"
+            const [year, month] = lastPeriod.split('-').map(Number);
+            const months = [];
+            let y = year, m = month;
+            for (let i = 0; i < count; i++) {
+                m++;
+                if (m > 12) { m = 1; y++; }
+                months.push(`${y}-${String(m).padStart(2, '0')}`);
+            }
+            return months;
+        }
+
+        async function main() {
+            // Fetch both units' data
+            const smcStat = await fetchJSON('/db/smc_stat.json');
+            const largeStat = await fetchJSON('/db/large_stat.json');
+
+            const smcHistory = smcStat.business_units[0].monthly_history;
+            const largeHistory = largeStat.business_units[0].monthly_history;
+
+            // Predict next 12 months revenue for each unit
+            const smcPred = linearGrowth(smcHistory, 'revenue');
+            const largePred = linearGrowth(largeHistory, 'revenue');
+
+            const lastSmcPeriod = smcHistory[smcHistory.length - 1].period;
+            const lastLargePeriod = largeHistory[largeHistory.length - 1].period;
+            const monthsSmc = nextMonths(lastSmcPeriod, 12);
+            const monthsLarge = nextMonths(lastLargePeriod, 12);
+
+            // Sum for total company prediction
+            const totalPred = smcPred.map((v, i) => v + (largePred[i] || 0));
+            const months = monthsSmc.length > monthsLarge.length ? monthsSmc : monthsLarge;
+
+            // Show results
+            const resultsDiv = document.getElementById('prediction-results');
+            resultsDiv.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 rounded accent-dark text-white">
+                        <div class="text-lg font-semibold mb-2">Small & Medium</div>
+                        <div class="text-2xl font-bold">${smcPred.reduce((a,b)=>a+b,0).toLocaleString('en-IN', {style:'currency',currency:'INR'})}</div>
+                    </div>
+                    <div class="p-4 rounded accent-dark text-white">
+                        <div class="text-lg font-semibold mb-2">Large</div>
+                        <div class="text-2xl font-bold">${largePred.reduce((a,b)=>a+b,0).toLocaleString('en-IN', {style:'currency',currency:'INR'})}</div>
+                    </div>
+                    <div class="p-4 rounded accent-dark text-white">
+                        <div class="text-lg font-semibold mb-2">Total</div>
+                        <div class="text-2xl font-bold">${totalPred.reduce((a,b)=>a+b,0).toLocaleString('en-IN', {style:'currency',currency:'INR'})}</div>
+                    </div>
+                </div>
+            `;
+
+            // Chart
+            const ctx = document.getElementById('predictionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Small & Medium',
+                            data: smcPred,
+                            borderColor: '#cdeec6',
+                            backgroundColor: 'rgba(205,238,198,0.2)',
+                            fill: true,
+                        },
+                        {
+                            label: 'Large',
+                            data: largePred,
+                            borderColor: '#536e3e',
+                            backgroundColor: 'rgba(83,110,62,0.2)',
+                            fill: true,
+                        },
+                        {
+                            label: 'Total',
+                            data: totalPred,
+                            borderColor: '#2d3748',
+                            backgroundColor: 'rgba(45,55,72,0.1)',
+                            fill: false,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top' },
+                        title: {
+                            display: true,
+                            text: 'Predicted Monthly Revenue (INR)'
+                        }
+                    }
+                }
+            });
+        }
+
+        main();
+    </script>
+</body>
+</html>

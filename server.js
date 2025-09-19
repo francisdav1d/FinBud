@@ -32,7 +32,7 @@ if (!GOOGLE_API_KEY) {
     process.exit(1);
 }
 const AI = new GoogleGenerativeAI(GOOGLE_API_KEY);
-const classifierModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+const classifierModel = AI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 const financialModel = AI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
 const KNOWLEDGE_BASE = fs.readFileSync('database/knowledgebase.json', 'utf8');
@@ -199,7 +199,7 @@ app.post('/chat', async (req, res) => {
             replyFromAi = await financialModel.generateContent(prompt);
             replyFromAi = replyFromAi.response.text();
         } else {
-            const prompt = `using context from the ${KNOWLEDGE_BASE} and the data from ${SMC_ACCOUNT_DATA} , DATA_FOR_LARGE_${LARGE_ACCOUNT_DATA},MAIN_DATA:${MAIN_DATA} answer the user query: ${userMessage} and reply to this it in markdown format with clear seperators for all tables. NOTE:all currencies are in INR and if the data provided was not enough assume  data needed for that answer and make an answer based on the assumed data.`;
+            const prompt = `using context from the ${KNOWLEDGE_BASE} and the data from ${SMC_ACCOUNT_DATA} , DATA_FOR_LARGE_${LARGE_ACCOUNT_DATA},MAIN_DATA:${MAIN_DATA} answer the user query: ${userMessage} and reply to this it in markdown format and all tables should be clearly formatted with seperators . NOTE:all currencies are in INR and if the data provided was not enough assume  data needed for that answer and make an answer based on the assumed data.`;
             replyFromAi = await financialModel.generateContent(prompt);
             replyFromAi = replyFromAi.response.text();
         }
